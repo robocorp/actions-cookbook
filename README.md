@@ -1,27 +1,44 @@
 # Welcome to Actions-Cookbook! 🌟
 
 ## What's This All About?
-The `actions-cookbook` is where magic happens in the world of [Robocorp Action Server](https://github.com/robocorp/robocorp)! It's a collection of exemplary AI Actions, showcasing the capabilities and potential of our tool. This repository is an open-source buffet – contributions are not just welcome, they're celebrated!
 
-## Sinking Your Teeth into the Repository
-Whether you're a seasoned coder or just starting out, this cookbook has something for everyone. Each example in this repository is categorized to help you find what you're looking for:
+The `actions-cookbook` is a unique collection of examples and templates, 
+designed to showcase the possibilities with the [Robocorp Action Server](https://github.com/robocorp/robocorp).
 
-- **OpenAI**: Description
-- **LangChain**: _coming soon_
-- **ControlRoom**: _coming soon_
-- **LLamaindex**: _coming soon_
+## Project Status: Developer Preview
 
-## Contributing to the Cookbook
-Got an idea that excites you? We'd love to see it! Here’s how you can contribute:
+It's important to note that the Robocorp Action Server itself is in an open-source developer preview phase.
+This means while you explore and contribute to the `actions-cookbook`, you're also interacting with a platform
+that's actively evolving. We're excited to see how your contributions will not only enrich the Cookbook
+but also demonstrate the capabilities and potential of the Robocorp Action Server.
 
-1. **Fork the Repository**: Create your own fork and make your changes.
-2. **Follow the Guidelines**: Ensure your contribution aligns with our guidelines (you can list them or link to a separate file).
-3. **Submit a Pull Request**: Once you're done, submit a PR for review.
+## Explore Our Examples
 
-We value all contributions, no matter how small or large! If you're unsure where to start, check out our 'Issues' section for ideas.
+Currently, our repository features a shining example at 
+[/examples/lada](/examples/lada) – a testament to what can be achieved with the right 
+mix of Python, AI, and automation. This example serves as a blueprint, 
+guiding you on how to create and contribute your own AI actions.
+Stay tuned, as we're eager to expand this section with more diverse
+and groundbreaking examples, with your help!
+
+## How to Contribute
+
+Ready to add your flavor to the cookbook? Here’s how:
+
+1. **Fork the Repository**: Start by creating your own fork. This is your canvas.
+2. **Create Magic**: Build your AI action. Whether it's a simple script or a complex algorithm, if it's innovative, it belongs here.
+3. **Follow the Guidelines**: Check out our [contribution guidelines]() to ensure your contribution is in line with our standards.
+4. **Submit a Pull Request**: Done with your masterpiece? Send us a PR, and let's review it together.
+
+Don't worry about the size or scope of your contribution. Every bit adds value!
+
+## Getting Started with Robocorp
+
+New to Robocorp? No problem! We've got you covered with some helpful resources to get you started.
+Check out [Robocorp's documentation]() and these [beginner guides]().
 
 ## Need Help?
-If you're stuck or have questions, feel free to open an issue or contact us directly. We're a community that supports each other!
+Questions? Hurdles? Ideas? Reach out by opening an issue, or join our community discussions. We're here to support each other in this exciting AI adventure!
 
 ## Acknowledgments
-A big thank you to all our contributors and the Robocorp community. You're what makes this cookbook sizzle!
+A heartfelt thank you to all the trailblazers and supporters in our community. Your contributions, big or small, are the secret ingredients that make this cookbook sizzle!
