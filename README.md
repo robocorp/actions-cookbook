@@ -27,8 +27,7 @@ Ready to add your flavor to the cookbook? Here’s how:
 
 1. **Fork the Repository**: Start by creating your own fork. This is your canvas.
 2. **Create Magic**: Build your AI action. Whether it's a simple script or a complex algorithm, if it's innovative, it belongs here.
-3. **Follow the Guidelines**: Check out our [contribution guidelines]() to ensure your contribution is in line with our standards.
-4. **Submit a Pull Request**: Done with your masterpiece? Send us a PR, and let's review it together.
+3. **Submit a Pull Request**: Done with your masterpiece? Send us a PR, and let's review it together.
 
 Don't worry about the size or scope of your contribution. Every bit adds value!
 

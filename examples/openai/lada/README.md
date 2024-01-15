@@ -4,10 +4,10 @@ A Python Notebook environment running on local machine
 that you may connect to OpenAI GPT as an [Action](https://platform.openai.com/docs/actions/introduction/what-is-an-action-in-a-gpt).
 
 Why LADA :car: ?:
+ * Any custom tools and or custom data sources, including access to internet (Install what you need, it is your environment)
  * Use as Large Data Files as you want (it is on your own machine, OpenAI has strict limits that people have been hitting)
  * Process as long time as you need (allows process to run as long as needed - OpenAI has about 30 second evaluation time)
- * Any custom tools and or custom data sources, including access to internet (Install what you need, it is your environment)
-
+ 
 ![](lada.jpg)
 
 # Make it run
