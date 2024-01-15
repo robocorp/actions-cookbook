@@ -2,24 +2,22 @@
 
 ## What's This All About?
 
-The `actions-cookbook` is a unique collection of examples and templates, 
+The `actions-cookbook` is a collection of examples and templates, 
 designed to showcase the possibilities with the [Robocorp Action Server](https://github.com/robocorp/robocorp).
 
 ## Project Status: Developer Preview
 
 It's important to note that the Robocorp Action Server itself is in an open-source developer preview phase.
 This means while you explore and contribute to the `actions-cookbook`, you're also interacting with a platform
-that's actively evolving. We're excited to see how your contributions will not only enrich the Cookbook
-but also demonstrate the capabilities and potential of the Robocorp Action Server.
+that's actively evolving. We're excited to see how your contributions increase potential of the Robocorp Action Server.
 
 ## Explore Our Examples
 
-Currently, our repository features a shining example at 
-[/examples/openai/local-advanced-data-analysis](/examples/openai/local-advanced-data-analysis) – a testament to what can be achieved
-with the right mix of Python, AI, and automation. This example serves as a blueprint,
-guiding you on how to create and contribute your own AI actions.
-Stay tuned, as we're eager to expand this section with more diverse
-and groundbreaking examples, with your help!
+Currently, our repository features a basic example:
+[/examples/basics/greeter](/examples/basics/greeter)
+
+And a more advanced deep dive to running Python Notebook locally:
+[/examples/openai/local-advanced-data-analysis](/examples/openai/local-advanced-data-analysis)
 
 ## How to Contribute
 
