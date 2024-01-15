@@ -27,6 +27,10 @@ cd actions
 action-server start --expose
 ```
 
+From Action Server outputs copy the link and the Bearer token to OpenAI GPT Action.
+
+Enjoy your custom GPT that connects to your local Python Notebook!
+
 # To make the image expose work
 
 - Register to [ImageKit](https://imagekit.io/)
