@@ -4,6 +4,12 @@ This example contains 2 actions.
 
 First action `adjust_image_for_ocr` adjusts a given image or if not given the screenshot of the desktop display for OCR. Incoming image must be already Base64 encoded. Action returns adjusted image as an Base64 encoded string.
 
+Example on incoming image:
+<img src="images/image_in.png" alt="Example incoming image" width="640"/>
+
+Example on adjusted image:
+<img src="images/image_out.png" alt="Example adjusted image" width="640"/>
+
 The second action `find_and_click` gets a desktop display screenshot, adjusts image for OCR and tries to find given text on the display. Action will click on center coordinates of all results.
 
 These actions are heavily experimental and `find_and_click` action works best for clear texts on the desktop like on Windows File Explorer view.
