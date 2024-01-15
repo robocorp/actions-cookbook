@@ -2,9 +2,9 @@
 
 This example contains 2 actions.
 
-First action gets electricity API data from https://api.porssisahko.net
+First action `get_porssisahko` gets electricity API data from https://api.porssisahko.net
 
-The second action handles posting a message into Slack channel.
+The second action `slack_message` handles posting a message into Slack channel.
 
 # To make the Slack messaging work
 
