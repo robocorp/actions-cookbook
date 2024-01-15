@@ -8,7 +8,7 @@ Why LADA :car: ?:
  * Use as Large Data Files as you want (it is on your own machine, OpenAI has strict limits that people have been hitting)
  * Process as long time as you need (allows process to run as long as needed - OpenAI has about 30 second evaluation time)
 
-<img src="lada.jpg" alt="Example use" width="300"/>
+<img src="lada.jpg" alt="Example use" width="400"/>
 
 # Make it run
 
