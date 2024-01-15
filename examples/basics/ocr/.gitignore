@@ -15,5 +15,5 @@ temp/
 testrun/*
 .~lock*
 *.pkl
-*.png
 .env
+ocrtarget.png
