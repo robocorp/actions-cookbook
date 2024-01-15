@@ -35,4 +35,4 @@ This example contains three tasks that can be run to test actions: `Test - Find 
 You can expose this action to internet with `action-server start --expose`.
 Then you may use it in services such as OpenAI GPT Action.
 
-This way both actions can be used as necessary by requesting the GPT for example.
+This way both actions can be used as necessary by the GPT.
