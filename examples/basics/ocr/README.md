@@ -30,7 +30,7 @@ There you can try the actions `adjust_image_for_ocr` and `find_and_click` out.
 These are defined in the `robot.yaml` file and can be run using `Robocorp Code` VSCode extension.
 This example contains three tasks that can be run to test actions: `Test - Find and Click`, `Test - Adjust screenshot for OCR` and `Test - Adjust input image for OCR`.
 
-## Running action as a custom OpenAI GTP Action
+## Running action as a custom OpenAI GPT Action
 
 You can expose this action to internet with `action-server start --expose`.
 Then you may use it in services such as OpenAI GPT Action.
