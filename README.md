@@ -35,7 +35,7 @@ Don't worry about the size or scope of your contribution. Every bit adds value!
 ## Getting Started with Robocorp
 
 New to Robocorp? No problem! We've got you covered with some helpful resources to get you started.
-Check out [Robocorp's documentation]() and these [beginner guides]().
+Check out [Robocorp's documentation](https://robocorp.com/docs) and these [beginner guides](https://robocorp.com/docs/quickstart-guide).
 
 ## Need Help?
 Questions? Hurdles? Ideas? Reach out by opening an issue, or join our community discussions. We're here to support each other in this exciting AI adventure!
