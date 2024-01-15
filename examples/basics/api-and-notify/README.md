@@ -28,7 +28,7 @@ This example contains two task that can be run to test actions: `Test - Slack` a
 The `Test - Slack` can be fed test data using `devdata/input_slack.json` file, where action parameters
 are given values.
 
-## Running action as a custom OpenAI GTP Action
+## Running action as a custom OpenAI GPT Action
 
 You can expose this action to internet with `action-server start --expose`.
 Then you may use it in services such as OpenAI GPT Action.
