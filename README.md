@@ -15,7 +15,7 @@ but also demonstrate the capabilities and potential of the Robocorp Action Serve
 ## Explore Our Examples
 
 Currently, our repository features a shining example at 
-[/examples/openai/lada](/examples/openai/local-advanced-data-analysis) – a testament to what can be achieved
+[/examples/openai/local-advanced-data-analysis](/examples/openai/local-advanced-data-analysis) – a testament to what can be achieved
 with the right mix of Python, AI, and automation. This example serves as a blueprint,
 guiding you on how to create and contribute your own AI actions.
 Stay tuned, as we're eager to expand this section with more diverse
