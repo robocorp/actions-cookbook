@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "e:/koodi/repos/robocorp/actions-cookbook/examples/basics/api-and-notify/."
+    ]
+}
