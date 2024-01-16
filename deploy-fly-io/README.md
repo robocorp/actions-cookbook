@@ -1,16 +1,16 @@
-# Deploy ⚡️ Action Server to Fly.io
+# Deploy ⚡️ Action Server to fly.io
 
-This an example on how to deploy your [Robocorp Action Server](https://github.com/robocorp/robo/tree/master/action_server/docs#readme) to [Fly.io](Fly.io).
+This an example on how to deploy your [Robocorp Action Server](https://github.com/robocorp/robo/tree/master/action_server/docs#readme) to [fly.io](fly.io).
 
-This example assumes you have your action already created, tested and ready to launch. The example also uses minimal configuration as a starting point for your own custom setup.
+This example assumes you have your actions already created, tested and ready to launch. The example also uses minimal configuration as a starting point for your own custom setup.
 
-## Setup Fly.io
+## Setup fly.io
 
-Follow the [Fly.io Speedrun](https://fly.io/docs/speedrun/) on how to setup your account. You will need to [install the flyctl](https://fly.io/docs/hands-on/install-flyctl/) command-line utility and setup an account with it.
+Follow the [fly.io Speedrun](https://fly.io/docs/speedrun/) on how to setup your account. You will need to [install the flyctl](https://fly.io/docs/hands-on/install-flyctl/) command-line utility and setup an account via it.
 
-## Prepare Action Server
+## Prepare your Action Server
 
-For this setup, create a [./docker/Dockerfile](./docker/Dockerfile) that will setup a Python based image to install and run Action Server itself, use [Nginx](https://www.nginx.com) as a proxy and [Supervisor](https://supervisord.org/) for process control. You can leave the file as is or update it to your likings and needs:
+THe deployment will utilize a [./docker/Dockerfile](./docker/Dockerfile) that will setup a Python based image to install and run Action Server itself, use [Nginx](https://www.nginx.com) as a proxy and [Supervisor](https://supervisord.org/) for process control. You can leave the file as is or update it to your likings and needs:
 
 ```Dockerfile
 ARG PYTHON_VERSION=3.11
@@ -22,9 +22,11 @@ RUN apt-get update && apt-get install -y
 RUN mkdir -p /action-server
 WORKDIR /action-server
 
+# Install and setup Action Server
 RUN pip install robocorp-action-server
 COPY . .
 
+# Install and setup Nginx and Supervisor
 RUN apt-get update && apt-get install -y nginx supervisor && \
     rm -rf /var/lib/apt/lists/*
 
@@ -36,7 +38,7 @@ EXPOSE 8080
 CMD ["/usr/bin/supervisord"]
 ```
 
-Nginx will use the [./docker/nginx.conf](./docker/nginx.conf) file to setup a proxy and expose only those Action Server endpoints that are required for most AI applications.
+Nginx will use the [./docker/nginx.conf](./docker/nginx.conf) config file to setup a proxy and expose only those Action Server endpoints that are required for AI applications.
 
 ```nginx
 events {}
@@ -63,7 +65,7 @@ http {
 }
 ```
 
-Supervisor [./docker/supervisord.conf](./docker/supervisord.conf) will handle launching both Action Server and Nginx in tandem and report the logs to Fly.io:
+Supervisor [./docker/supervisord.conf](./docker/supervisord.conf) will handle launching both Action Server and Nginx in tandem and report the logs to fly.io:
 
 ```ini
 [supervisord]
@@ -83,8 +85,11 @@ stdout_logfile_maxbytes=0
 stderr_logfile=/dev/stderr
 stderr_logfile_maxbytes=0
 ```
+---
 
-And as a final configuration, a Fly.io configuration file [./fly.toml](./fly.toml) is needed. Adjust the `app` value to match your application name:
+As the final configuration, a fly.io configuration file [./fly.toml](./fly.toml) is needed.
+
+Adjust the `app` value to match your application name:
 
 ```toml
 app = "action-server-fly-io-example"
@@ -99,7 +104,7 @@ app = "action-server-fly-io-example"
 
 ## Set your API key
 
-To protect your actions, setup an API key for Action Server – [the Fly.io secrets](https://fly.io/docs/reference/secrets/) feature is perfect for this:
+To protect your actions, setup an API key for Action Server – [the fly.io secrets](https://fly.io/docs/reference/secrets/) feature is perfect for this:
 
 ```sh
 fly secrets set ACTION_SERVER_KEY=your-secret-key
@@ -114,8 +119,10 @@ Once everything is setup, run `fly launch` and follow the instructions 🚀
 
 If everything goes well 🤞 you will end up with a url like https://action-server-fly-io-example.fly.dev that is ready to be used in OpenAI GPTs and other AI applications.
 
+---
+
 ### Next steps
 
-- 📖 Follow the [Fly.io documentation](https://fly.io/docs/) for next steps and further configuration of the deployment
+- 📖 Follow the [fly.io documentation](https://fly.io/docs/) for next steps and further configuration of the deployment
 - 🌟 Check out other [Action Server examples](https://github.com/robocorp/actions-cookbook) for references and inspiration
 - 🙋‍♂️ Look for further help in the main[Robocorp repo](https://github.com/robocorp/robocorp)
