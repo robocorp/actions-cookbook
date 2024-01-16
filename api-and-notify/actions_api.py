@@ -4,7 +4,7 @@ import requests
 from typing import Dict, List
 
 
-@action
+@action(is_consequential=True)
 def get_porssisahko(hours: int = 8) -> str:
     """
     Get the electricity prices for next 8 hours from api.porssisahko.net
