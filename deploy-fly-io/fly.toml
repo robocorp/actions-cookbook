@@ -1,0 +1,19 @@
+# fly.toml app configuration file generated for action-server-fly-io-example on 2024-01-16T17:17:25+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "action-server-fly-io-example"
+primary_region = "waw"
+
+[build]
+  dockerfile = "docker/Dockerfile"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 1024
