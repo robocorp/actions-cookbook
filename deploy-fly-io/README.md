@@ -1,4 +1,4 @@
-# Deploy ⚡️ Action Server to fly.io
+# Deploy ⚡️Action Server to fly.io
 
 This an example on how to deploy your [Robocorp Action Server](https://github.com/robocorp/robo/tree/master/action_server/docs#readme) to [fly.io](fly.io).
 
@@ -10,10 +10,11 @@ Follow the [fly.io Speedrun](https://fly.io/docs/speedrun/) on how to setup your
 
 ## Prepare your Action Server
 
-The deployment will utilize [fly.io Docker deployment](https://fly.io/docs/languages-and-frameworks/dockerfile/) and will setup [Nginx](https://www.nginx.com) as a proxy and utilize [Supervisor](https://supervisord.org/) for process control. A configuration file is requried for each - you can leave each as is or update to your needs:
--  Docker [./docker/Dockerfile](./docker/Dockerfile) to setup the base Python image
--  Nginx [./docker/nginx.conf](./docker/nginx.conf) to setup a proxy and expose only those Action Server endpoints that are required for AI applications.
--  Supervisor [./docker/supervisord.conf](./docker/supervisord.conf) to handle launching both Action Server and Nginx in tandem and report the logs to fly.io:
+The deployment will use [fly.io Docker deployment](https://fly.io/docs/languages-and-frameworks/dockerfile/) and will setup [Nginx](https://www.nginx.com) as a proxy server and utilize [Supervisor](https://supervisord.org/) for process control. A configuration file is requried for each - you can leave each as is or update to your needs:
+
+- Docker [./docker/Dockerfile](./docker/Dockerfile) to setup the base Python image
+- Nginx [./docker/nginx.conf](./docker/nginx.conf) to setup a proxy and expose only those Action Server endpoints that are required for AI applications.
+- Supervisor [./docker/supervisord.conf](./docker/supervisord.conf) to handle launching both Action Server and Nginx in tandem and report the logs to fly.io.
 
 ---
 
@@ -41,7 +42,7 @@ fly secrets set ACTION_SERVER_KEY=your-secret-key
 ```
 
 > [!NOTE]
-> Remember and do not share the API key as you will need it when setting up your AI application
+> Protect and remember the API key – you will need it when setting up your AI application
 
 ## Deploy
 

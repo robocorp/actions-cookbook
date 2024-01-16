@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y
 RUN mkdir -p /action-server
 WORKDIR /action-server
 
-RUN pip install robocorp-action-server
+RUN pip install --upgrade robocorp-action-server
 COPY . .
 
 RUN apt-get update && apt-get install -y nginx supervisor && \

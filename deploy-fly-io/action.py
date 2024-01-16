@@ -43,8 +43,5 @@ def compare_time_zones(user_timezone: str, compare_to_timezones: str) -> str:
             output.append(f"- Current time in {timezone} is {target_now.strftime('%I:%M %p')}, the difference with {user_timezone} is {time_diff} hours")
         except pytz.InvalidTimeError:
             output.append(f"- Timezone '{timezone}' could not be found. Use tz database format.")
-
-    # Pretty print for log
-    print("\n".join(output))
     
-    return os.environ["FLY_APP_NAME"] # "\n".join(output)
+    return "\n".join(output)
