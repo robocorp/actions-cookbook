@@ -1,39 +1,75 @@
-# Template: Python - Actions
+# Deploy ⚡️Action Server to Digital Ocean
 
-This template gets you started in creating Actions for [Robocorp Action Server](https://github.com/robocorp/robo/tree/master/action_server/docs#readme).
+This an example on how to deploy your [Robocorp Action Server](https://github.com/robocorp/robo/tree/master/action_server/docs#readme) to [Digital Ocean](https://www.digitalocean.com).
 
-`Actions` and `Action Server` enable you to "give your AI Agents hands" meaning that your AI/LLM Agent can help your users perform distinct actions that get executed based on the LLM discussion.
+This example assumes you have your actions already created, tested and ready to launch. The example also uses minimal configuration as a starting point for your own custom setup.
 
-## Quickstart
+## Setup Digital Ocean
 
-👉 Follow the Action Server [Quickstart guide](https://github.com/robocorp/robocorp?tab=readme-ov-file#%EF%B8%8F-quickstart) in the main repository.
+You will need to setup an account with Digital Ocean and optinally [install the doctl](https://docs.digitalocean.com/reference/doctl/how-to/install/) command-line utility.
 
+## Prepare your Action Server
 
-## Dependency management
+The deployment will use a [Docker deployment](https://fly.io/docs/languages-and-frameworks/dockerfile/) and will setup [Nginx](https://www.nginx.com) as a proxy server and utilize [Supervisor](https://supervisord.org/) for process control.
 
-We recommend placing your dependencies in [conda.yaml](conda.yaml).
+Setting up configuration file for each is needed - you can leave them as in this example or update to your needs:
 
-👉 More on [managing your dependencies](https://github.com/robocorp/robocorp?tab=readme-ov-file#what-makes-a-python-function-an-%EF%B8%8Faction) in the main repository.
+- Docker [./docker/Dockerfile](./docker/Dockerfile) to setup the base Python image
+- Nginx [./docker/nginx.conf](./docker/nginx.conf) to expose endpoints needed for use in AI applications
+- Supervisor [./docker/supervisord.conf](./docker/supervisord.conf) to handle the service management
 
+---
 
-## Actions in VS Code 
+## Deployment
 
-👉 Using [Robocorp Code extension for VS Code](https://marketplace.visualstudio.com/items?itemName=robocorp.robocorp-code), you can get everything set up and running in VS Code in no time.
+As the final step – create the Digital Ocean configuration file [./.do/app.yaml](./.do/app.yaml).
 
-The template has a few files that enable the extension to find and set up your action environment and provide code completion. There is also a side panel where we have and will add some easy-to-use functionalities.
+Adjust the `name` to match your application name and update the `git` and `source_dir` values:
 
-![](docs/vscode.png)
+```yaml
+name: action-server-do-example
 
-When debugging your Actions Python code, you probably do not want to give the inputs every time you run and always be running the Action Server, so you can set your test inputs in a [input.json](./devdata/input.json) and just run/debug your Python code.
+services:
+  - name: action-server
+    dockerfile_path: ./deploy-digital-ocean/docker/Dockerfile
+    git:
+      branch: example/deploy-digital-ocean
+      repo_clone_url: https://github.com/robocorp/actions-cookbook.git
+    source_dir: deploy-digital-ocean
+    routes:
+      - path: /
+```
 
+## Deploy
 
-## What does the template Action do?
+You can now use the [Digital Ocean App Platform Quickstart](https://docs.digitalocean.com/products/app-platform/getting-started/quickstart/) to connect your repository to Digital Ocean.
 
-The template is a simple starting point to show how to get started.
+Optionally, you can also deploy the Application via cli:
 
-The action enables you to get the timezone differences between locations.
+```sh
+doctl apps create --spec .do/app.yaml
+```
 
-We use [pytz](https://pypi.org/project/pytz/) as an example to show that you can leverage the whole Python ecosystem. Robocorp provides a [bunch of libraries](https://pypi.org/search/?q=robocorp-); you can make your own. The sky is the limit.
+If everything goes well 🤞 your application will get built and deployed. 🚀
 
-🚀 Now, go get'em
+## Set your API key and URL
 
+You will need to [create two Environment Variables](https://docs.digitalocean.com/products/app-platform/how-to/use-environment-variables/#using-bindable-variables-within-environment-variables) inside your freshly created Application:
+
+- `ACTION_SERVER_URL` with the public URL of your application – you can use the the
+
+```
+ACTION_SERVER_URL=
+ACTION_SERVER_API=
+```
+
+> [!NOTE]
+> Protect and remember the API key – you will need it when setting up your AI application
+
+---
+
+### Next steps
+
+- 📖 Follow the [fly.io documentation](https://fly.io/docs/) for further configuration of the deployment infrastructure
+- 🌟 Check out other [Action Server examples](https://github.com/robocorp/actions-cookbook) for reference and inspiration
+- 🙋‍♂️ Look for further assistance and help in the main [Robocorp repo](https://github.com/robocorp/robocorp)

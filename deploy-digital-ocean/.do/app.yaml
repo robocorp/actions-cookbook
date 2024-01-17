@@ -9,3 +9,9 @@ services:
     source_dir: deploy-digital-ocean
     routes:
       - path: /
+    envs:
+      - key: ACTION_SERVER_URL
+        value: "https://your-action-server.url"
+      - key: ACTION_SERVER_KEY
+        value: "secret-api-key-example-value"
+        type: SECRET
