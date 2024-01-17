@@ -11,7 +11,7 @@ services:
       - path: /
     envs:
       - key: ACTION_SERVER_URL
-        value: "https://your-action-server.url"
+        value: "${ACTION_SERVER_URL}"
       - key: ACTION_SERVER_KEY
-        value: "secret-api-key-example-value"
+        value: "${ACTION_SERVER_KEY}"
         type: SECRET
