@@ -1,0 +1,18 @@
+name: action-server-do-example
+
+services:
+  - name: action-server
+    dockerfile_path: ./docker/Dockerfile
+    git:
+      branch: example/deploy-digital-ocean
+      repo_clone_url: https://github.com/robocorp/actions-cookbook.git
+      deploy_on_push: false
+    source_dir: deploy-digital-ocean
+    routes:
+      - path: /
+    envs:
+      - key: ACTION_SERVER_URL
+        value: "This is a greeting message"
+      - key: ACTION_SERVER_KEY
+        value: "secret-api-key-example-value"
+        type: SECRET
