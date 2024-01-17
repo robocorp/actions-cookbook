@@ -1,6 +1,8 @@
-from ubuntu:latest
+ARG PYTHON_VERSION=3.10.12
 
-RUN apt update && apt install python3 python3-pip -y && apt clean
+FROM python:${PYTHON_VERSION}
+
+RUN apt-get update && apt-get install -y
 
 RUN mkdir -p /action-server
 WORKDIR /action-server
