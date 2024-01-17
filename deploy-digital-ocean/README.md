@@ -53,7 +53,7 @@ If everything goes well 🤞 your application will get built and deployed. 🚀
 
 To finish the application setup, you will need to [create two Environment Variables](https://docs.digitalocean.com/products/app-platform/how-to/use-environment-variables/#using-bindable-variables-within-environment-variables) inside your freshly created Application:
 
-- `ACTION_SERVER_URL` - the Live App URL of your application
+- `ACTION_SERVER_URL` - the Live App URL of your application, e.g. https://your-app-name.ondigitalocean.app
 - `ACTION_SERVER_API` - an API key for Action Server, you should `Encrypt` this variable
 
 > [!NOTE]
