@@ -15,8 +15,8 @@ The deployment will use [fly.io Docker deployment](https://fly.io/docs/languages
 Setting up configuration file for each is needed - you can leave them as in this example or update to your needs:
 
 - Docker [./docker/Dockerfile](./docker/Dockerfile) to setup the base Python image
-- Nginx [./docker/nginx.conf](./docker/nginx.conf) to expose endpoints need for AI application
-- Supervisor [./docker/supervisord.conf](./docker/supervisord.conf) to handle launching the applications
+- Nginx [./docker/nginx.conf](./docker/nginx.conf) to expose endpoints needed for use in AI applications
+- Supervisor [./docker/supervisord.conf](./docker/supervisord.conf) to handle the service management
 
 ---
 
