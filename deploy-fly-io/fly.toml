@@ -1,0 +1,12 @@
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "action-server-fly-io-example"
+primary_region = "waw"
+
+[build]
+  dockerfile = "docker/Dockerfile"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
