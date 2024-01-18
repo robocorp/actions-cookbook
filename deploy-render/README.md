@@ -6,7 +6,7 @@ This example assumes you have your actions already created, tested and ready to 
 
 ## Setup Render
 
-You will need to create an account [Render.com](https://render.com). Easiest way to get started is by deploying from a Git repository, so no additional setup is needed.
+You will need to create an account [Render.com](https://render.com). Easiest way to get started is by deploying your Action Server from a Git repository, so no additional setup is needed.
 
 ## Prepare your Action Server
 
@@ -22,7 +22,7 @@ Setting up configuration file for each is needed - you can leave them as in this
 
 As the final step – create the Render configuration file [./render.yaml](./render.yaml).
 
-Adjust the `app` value to match your application name:
+Adjust the `name` value to match your application name and the `repo` URL:
 
 ```yaml
 services:
@@ -39,9 +39,9 @@ services:
 
 ## Deploy
 
-Once everything is setup, commit your changes and at Render dashboard create a new [Web service](https://docs.render.com/web-services) and connect to your Action Server repository.
+Once everything is setup, commit your changes and in Render dashboard create a new [Web service](https://docs.render.com/web-services) and connect it to your Action Server repository.
 
-Follow the instructions and setup the `ACTION_SERVER_KEY` with a secure private key for teh Action Server.
+Follow the instructions and don't forget to setup the `ACTION_SERVER_KEY` Environment Variable with a secure private key for the Action Server use.
 
 > [!NOTE]
 > Protect and remember the API key – you will need it when setting up your AI application
