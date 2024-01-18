@@ -6,7 +6,7 @@ This example assumes you have your actions already created, tested and ready to 
 
 ## Setup Render
 
-You will need to create an account [Render.com](https://render.com). Easiest way to get started is by deploying your Action Server from a Git repository, so no additional setup is needed.
+You will need to create a [Render.com](https://render.com) account. Easiest way to get started is by deploying your Action Server from a Git repository, so no additional setup is needed.
 
 ## Prepare your Action Server
 
