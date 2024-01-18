@@ -1,3 +1,3 @@
 [build]
 builder = "DOCKERFILE"
-dockerfilePath = "./docker/Dockerfile"
+dockerfilePath = "./deploy-railway/docker/Dockerfile"
