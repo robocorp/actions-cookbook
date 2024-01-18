@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: action-server-render-example
+    env: docker
+    repo: https://github.com/robocorp/actions-cookbook
+    autoDeploy: false
+    rootDir: deploy-render
+    dockerfilePath: ./docker/Dockerfile
+    dockerContext: .
+    envVars:
+      - key: ACTION_SERVER_KEY
+        sync: false
