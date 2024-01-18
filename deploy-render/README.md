@@ -1,39 +1,57 @@
-# Template: Python - Actions
+# Deploy ⚡️Action Server to Render
 
-This template gets you started in creating Actions for [Robocorp Action Server](https://github.com/robocorp/robo/tree/master/action_server/docs#readme).
+This an example on how to deploy your [Robocorp Action Server](https://github.com/robocorp/robo/tree/master/action_server/docs#readme) to [Render](https://render.com).
 
-`Actions` and `Action Server` enable you to "give your AI Agents hands" meaning that your AI/LLM Agent can help your users perform distinct actions that get executed based on the LLM discussion.
+This example assumes you have your actions already created, tested and ready to launch. The example also uses minimal configuration as a starting point for your own custom setup.
 
-## Quickstart
+## Setup Render
 
-👉 Follow the Action Server [Quickstart guide](https://github.com/robocorp/robocorp?tab=readme-ov-file#%EF%B8%8F-quickstart) in the main repository.
+You will need to create an account [Render.com](https://render.com). Easiest way to get started is by deploying from a Git repository, so no additional setup is needed.
 
+## Prepare your Action Server
 
-## Dependency management
+The deployment will use [Render Docker deployment](https://docs.render.com/docker) and will setup [Nginx](https://www.nginx.com) as a proxy server and utilize [Supervisor](https://supervisord.org/) for process control.
 
-We recommend placing your dependencies in [conda.yaml](conda.yaml).
+Setting up configuration file for each is needed - you can leave them as in this example or update to your needs:
 
-👉 More on [managing your dependencies](https://github.com/robocorp/robocorp?tab=readme-ov-file#what-makes-a-python-function-an-%EF%B8%8Faction) in the main repository.
+- Docker [./docker/Dockerfile](./docker/Dockerfile) to setup the base Python image
+- Nginx [./docker/nginx.conf](./docker/nginx.conf) to expose endpoints needed for use in AI applications
+- Supervisor [./docker/supervisord.conf](./docker/supervisord.conf) to handle the service management
 
+---
 
-## Actions in VS Code 
+As the final step – create the Render configuration file [./render.yaml](./render.yaml).
 
-👉 Using [Robocorp Code extension for VS Code](https://marketplace.visualstudio.com/items?itemName=robocorp.robocorp-code), you can get everything set up and running in VS Code in no time.
+Adjust the `app` value to match your application name:
 
-The template has a few files that enable the extension to find and set up your action environment and provide code completion. There is also a side panel where we have and will add some easy-to-use functionalities.
+```yaml
+services:
+  - type: web
+    name: action-server-render-example
+    env: docker
+    repo: https://github.com/your-username/your-repository
+    dockerfilePath: ./docker/Dockerfile
+    dockerContext: .
+    envVars:
+      - key: ACTION_SERVER_KEY
+        sync: false
+```
 
-![](docs/vscode.png)
+## Deploy
 
-When debugging your Actions Python code, you probably do not want to give the inputs every time you run and always be running the Action Server, so you can set your test inputs in a [input.json](./devdata/input.json) and just run/debug your Python code.
+Once everything is setup, commit your changes and at Render dashboard create a new [Web service](https://docs.render.com/web-services) and connect to your Action Server repository.
 
+Follow the instructions and setup the `ACTION_SERVER_KEY` with a secure private key for teh Action Server.
 
-## What does the template Action do?
+> [!NOTE]
+> Protect and remember the API key – you will need it when setting up your AI application
 
-The template is a simple starting point to show how to get started.
+If everything goes well 🤞 you will end up with an url like https://action-server-example.onrender.com/ that is ready to be used in OpenAI GPTs and other AI applications.
 
-The action enables you to get the timezone differences between locations.
+---
 
-We use [pytz](https://pypi.org/project/pytz/) as an example to show that you can leverage the whole Python ecosystem. Robocorp provides a [bunch of libraries](https://pypi.org/search/?q=robocorp-); you can make your own. The sky is the limit.
+### Next steps
 
-🚀 Now, go get'em
-
+- 📖 Follow the [Render documentation](https://docs.render.com/) for further configuration of the deployment infrastructure
+- 🌟 Check out other [Action Server examples](https://github.com/robocorp/actions-cookbook) for reference and inspiration
+- 🙋‍♂️ Look for further assistance and help in the main [Robocorp repo](https://github.com/robocorp/robocorp)
