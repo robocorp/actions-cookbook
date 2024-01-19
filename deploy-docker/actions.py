@@ -23,12 +23,7 @@ def search_wikipedia(topic: str) -> str:
 
     page.wait_for_selector("#mw-content-text")
 
-    paragraph = page.query_selector("#mw-content-text > div p:first-of-type")
+    paragraph = page.query_selector("#mw-content-text > div p:not(.mw-empty-elt)")
     content = paragraph.text_content()
 
-    result = {
-        "content": content,
-        "url": page.url
-    }
-
-    return json.dumps(result)
+    return content
