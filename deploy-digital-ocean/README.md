@@ -6,7 +6,7 @@ This example assumes you have your actions already created, tested and ready to 
 
 ## Setup Digital Ocean
 
-You will need to setup an account with Digital Ocean and optinally [install the doctl](https://docs.digitalocean.com/reference/doctl/how-to/install/) command-line utility.
+You will need to setup an account with Digital Ocean and optionally [install the doctl](https://docs.digitalocean.com/reference/doctl/how-to/install/) command-line utility. This setup also requires your final Action Server code to be commited to a Github repository.
 
 ## Prepare your Action Server
 
@@ -14,7 +14,7 @@ The deployment will use a [Docker deployment](https://docs.digitalocean.com/prod
 
 Setting up configuration file for each is needed - you can leave them as in this example or update to your needs:
 
-- Docker [./docker/Dockerfile](./docker/Dockerfile) to setup the base Python image
+- Docker [./docker/Dockerfile](./docker/Dockerfile) to setup the Docker image
 - Nginx [./docker/nginx.conf](./docker/nginx.conf) to expose endpoints needed for use in AI applications
 - Supervisor [./docker/supervisord.conf](./docker/supervisord.conf) to handle the service management
 
@@ -39,7 +39,7 @@ services:
 
 ## Deploy
 
-You can now use the [Digital Ocean App Platform Quickstart](https://docs.digitalocean.com/products/app-platform/getting-started/quickstart/) to connect your repository to Digital Ocean.
+After commiting the changes to your repository, you can now use the [Digital Ocean App Platform Quickstart](https://docs.digitalocean.com/products/app-platform/getting-started/quickstart/) to connect it to your Digital Ocean account.
 
 Optionally, you can also deploy the Application via cli:
 
@@ -63,6 +63,6 @@ To finish the application setup, you will need to [create two Environment Variab
 
 ### Next steps
 
-- 📖 Follow the [Digital OCean documentation](https://docs.digitalocean.com) for further configuration of the deployment infrastructure
+- 📖 Follow the [Digital Ocean documentation](https://docs.digitalocean.com) for further configuration of the deployment infrastructure
 - 🌟 Check out other [Action Server examples](https://github.com/robocorp/actions-cookbook) for reference and inspiration
 - 🙋‍♂️ Look for further assistance and help in the main [Robocorp repo](https://github.com/robocorp/robocorp)
