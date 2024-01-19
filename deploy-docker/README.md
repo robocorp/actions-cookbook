@@ -43,7 +43,7 @@ Your Action Server now exposes two endpoints:
 - 🌍 http://localhost:3000 - Action Server API ready to be used in local AI applications
 
 > [!WARNING]
-> In this example Action Server is running without a set API key or external url defined – how to configure these depends on your deployment environment or chose provider – see other [Action Server deploy examples](https://github.com/robocorp/actions-cookbook) for reference on how to do it.
+> In this example Action Server is running without a set API key or public url defined – how to configure these depends on your deployment environment or chosen provider – see other [Action Server deploy examples](https://github.com/robocorp/actions-cookbook) for reference configuration.
 
 ---
 
