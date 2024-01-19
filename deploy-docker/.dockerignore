@@ -1,0 +1,6 @@
+.git
+.env
+*.md
+
+# Action Server
+robot.yaml
