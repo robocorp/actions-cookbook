@@ -1,16 +1,16 @@
-# Deploy ⚡️Action Server to fly.io
+# Deploy ⚡️Action Server to Railway
 
-This an example on how to deploy your [Robocorp Action Server](https://github.com/robocorp/robo/tree/master/action_server/docs#readme) to [fly.io](fly.io).
+This an example on how to deploy your [Robocorp Action Server](https://github.com/robocorp/robo/tree/master/action_server/docs#readme) to [Railway.app](https://railway.app).
 
 This example assumes you have your actions already created, tested and ready to launch. The example also uses minimal configuration as a starting point for your own custom setup.
 
-## Setup fly.io
+## Setup Railway
 
-Follow the [fly.io Speedrun](https://fly.io/docs/speedrun/) on how to setup your account. You will need to [install the flyctl](https://fly.io/docs/hands-on/install-flyctl/) command-line utility and setup an account via it.
+You will need to create a [Railway.app](https://railway.app) account. Easiest way to get started is by creating a new Service connected to your Github account, so no additional setup is needed.
 
 ## Prepare your Action Server
 
-The deployment will use [fly.io Docker deployment](https://fly.io/docs/languages-and-frameworks/dockerfile/) and will setup [Nginx](https://www.nginx.com) as a proxy server and utilize [Supervisor](https://supervisord.org/) for process control.
+The deployment will use [Railway Docker deployment](https://docs.railway.app/guides/dockerfiles) and will setup [Nginx](https://www.nginx.com) as a proxy server and utilize [Supervisor](https://supervisord.org/) for process control.
 
 Setting up configuration file for each is needed - you can leave them as in this example or update to your needs:
 
@@ -20,37 +20,24 @@ Setting up configuration file for each is needed - you can leave them as in this
 
 ---
 
-As the final step – create the fly.io configuration file [./fly.toml](./fly.toml).
-
-Adjust the `app` value to match your application name:
+As the final step – create the Railway configuration file [./railway.toml](./railway.toml).
 
 ```toml
-app = "action-server-fly-io-example"
-
 [build]
-  dockerfile = "docker/Dockerfile"
-
-[http_service]
-  internal_port = 8080
-  force_https = true
+builder = "DOCKERFILE"
+dockerfilePath = "./deploy-railway/docker/Dockerfile"
 ```
 
-## Set your API key
+## Deploy
 
-To protect your actions, setup an API key for Action Server – [the fly.io secrets](https://fly.io/docs/reference/secrets/) feature is perfect for this:
+Once everything is setup, commit your changes and in Render dashboard create a new [Service](https://docs.railway.app/overview/the-basics#services) and connect it to your Action Server Github repository.
 
-```sh
-fly secrets set ACTION_SERVER_KEY=your-secret-key
-```
+Follow the instructions and don't forget to setup the `ACTION_SERVER_KEY` Environment Variable with a secure private key for the Action Server use.
 
 > [!NOTE]
 > Protect and remember the API key – you will need it when setting up your AI application
 
-## Deploy
-
-Once everything is setup, run `fly launch` and follow the instructions 🚀
-
-If everything goes well 🤞 you will end up with an url like https://action-server-fly-io-example.fly.dev that is ready to be used in OpenAI GPTs and other AI applications.
+If everything goes well 🤞 you will end up with an url like https://action-server-example.onrender.com/ that is ready to be used in OpenAI GPTs and other AI applications.
 
 ---
 
