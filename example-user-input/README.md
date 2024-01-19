@@ -16,3 +16,5 @@ def greeter(name: str) -> str:
     place = request_input(f"Ask from the user: Where are you from {name}?")
     return f"Hello {name} from {place}!"
 ```
+
+If this is awesome in your opinion, voice it at https://github.com/robocorp/robocorp/issues/174.
