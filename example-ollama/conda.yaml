@@ -11,5 +11,5 @@ dependencies:
   - robocorp-truststore=0.8.0       # https://prefix.dev/channels/conda-forge/packages/robocorp-truststore
   - pip:
     - robocorp==1.4.0               # https://pypi.org/project/robocorp
-    - robocorp-actions==0.0.4       # https://pypi.org/project/robocorp-actions
+    - robocorp-actions==0.0.6       # https://pypi.org/project/robocorp-actions
     - langchain==0.1.1

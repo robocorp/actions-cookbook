@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "example-user-input"
+version = "0.1.0"
+description = ""
+authors = ["Mikko Korpela <mikko@robocorp.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.109.0"
+uvicorn = "^0.26.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

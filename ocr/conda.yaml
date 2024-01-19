@@ -13,7 +13,7 @@ dependencies:
   - pandas=2.1.4
   - pip:
     - robocorp==1.4.3
-    - robocorp-actions==0.0.5     # https://pypi.org/project/robocorp-browser
+    - robocorp-actions==0.0.6     # https://pypi.org/project/robocorp-browser
     - rpaframework==28.1.0
     - pyautogui==0.9.54
     - rpaframework-recognition==5.2.3
