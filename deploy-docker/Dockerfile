@@ -1,6 +1,4 @@
-ARG PYTHON_VERSION=3.11
-
-FROM python:${PYTHON_VERSION}
+FROM mcr.microsoft.com/playwright/python:v1.40.0-jammy
 
 RUN apt-get update && apt-get install -y
 
