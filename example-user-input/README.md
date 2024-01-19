@@ -8,3 +8,11 @@ There you can try the action `greet` out.
 
 You can expose this action to internet with `action-server start --expose`.
 Then you may use it in services such as OpenAI GPT Action.
+
+Target for this concept is to allow following user input during action execution:
+```python
+@action
+def greeter(name: str) -> str:
+    place = request_input(f"Ask from the user: Where are you from {name}?")
+    return f"Hello {name} from {place}!"
+```
