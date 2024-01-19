@@ -11,4 +11,4 @@ dependencies:
   - robocorp-truststore=0.8.0 # https://pypi.org/project/robocorp-truststore/
   - pip:
       - robocorp-browser==2.2.2
-      - robocorp-actions==0.0.5
+      - robocorp-actions==0.0.6
