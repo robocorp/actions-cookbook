@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y nginx supervisor && \
     rm -rf /var/lib/apt/lists/*
 
 COPY docker/nginx.conf /etc/nginx/nginx.conf
-COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Setup user and permissions
 RUN useradd -m as-user
