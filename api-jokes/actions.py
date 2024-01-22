@@ -6,7 +6,7 @@ API_URL = "https://icanhazdadjoke.com/"
 @action
 def get_a_random_joke() -> str:
     """Returns a random joke
-    
+
     Returns:
         str: A random joke
     """
@@ -22,10 +22,10 @@ def get_a_random_joke() -> str:
 
 @action
 def search_jokes(term: str) -> str:
-    """Finds jokes for a given term
-    
+    """Finds jokes for a given term.
+
     Args:
-        term (str): A term to create a joke about
+        term (str): A term to create a joke about. Use only single words, no sentences.
 
     Returns:
         str: A joke

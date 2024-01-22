@@ -2,7 +2,7 @@
 
 ## What's This All About?
 
-The `actions-cookbook` is a collection of examples and templates, 
+The `actions-cookbook` is a collection of examples and templates,
 designed to showcase the possibilities with the [Robocorp Action Server](https://github.com/robocorp/robocorp).
 
 ## Project Status: Developer Preview
@@ -18,6 +18,7 @@ To get started, here are some of the basic examples:
 - [Simple greeter, think of Hello World](/greeter)
 - [Use API to get jokes](/api-jokes)
 - [Automate browser to make Google searches](/browser-google)
+- [Expose Postgres database queries to AI app](/database-postgres/)
 
 And a more advanced deep dive to running Python Notebook locally:
 - [/local-advanced-data-analysis](/local-advanced-data-analysis)
