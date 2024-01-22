@@ -1,4 +1,4 @@
-# Example: Actions - Sales results & Computer uptime
+# Example: Actions - Make queries to Postgres database
 
 This example gets you started in creating Actions for [Robocorp Action Server](https://github.com/robocorp/robo/tree/master/action_server/docs#readme).
 
