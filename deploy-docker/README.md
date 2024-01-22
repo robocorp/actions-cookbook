@@ -15,8 +15,8 @@ This setup will the [Dockerfile](./Dockerfile) to setup Action Server in tandem 
 Setting up configuration file for each is needed - you can leave them as in this example or update to your needs:
 
 - Docker [./Dockerfile](./docker/Dockerfile) to setup the base Python image
-- Nginx [./docker/nginx.conf](./docker/nginx.conf) to expose endpoints needed for use in AI applications
-- Supervisor [./docker/supervisord.conf](./docker/supervisord.conf) to handle the service management
+- Nginx [./config/nginx.conf](./config/nginx.conf) to expose endpoints needed for use in AI applications
+- Supervisor [./config/supervisord.conf](./config/supervisord.conf) to handle the service management
 
 ## Build and Run
 
@@ -39,7 +39,7 @@ docker run -p 3000:8080 -p 4000:8087 my-action-server-app
 
 Your Action Server now exposes two endpoints:
 
-- ⚡️ http://localhost:4000 - Your Action Server Control Panel
+- ⚡️ http://localhost:4000 - Your Action Server Control Panel, to not expose it, remove the `-p 4000:8087` part form the run command
 - 🌍 http://localhost:3000 - Action Server API ready to be used in local AI applications
 
 > [!WARNING]
