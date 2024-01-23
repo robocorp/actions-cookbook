@@ -1,7 +1,7 @@
 FROM debian:bookworm-slim
 
 # Setup Nginx and Supervisor
-RUN apt-get update && apt-get install -y nginx supervisor && \
+RUN apt-get update && apt-get install -y procps nginx supervisor && \
     rm -rf /var/lib/apt/lists/*
 
 COPY docker/nginx.conf /etc/nginx/nginx.conf
