@@ -9,7 +9,9 @@ https://github.com/robocorp/robocorp/blob/master/README.md
 from robocorp.actions import action
 from datetime import datetime
 import pytz
+import requests
 
+JOKES_API_URL = "https://icanhazdadjoke.com/"
 
 @action
 def compare_time_zones(user_timezone: str, compare_to_timezones: str) -> str:
@@ -48,3 +50,48 @@ def compare_time_zones(user_timezone: str, compare_to_timezones: str) -> str:
     print("\n".join(output))
     
     return "\n".join(output)
+
+
+@action
+def get_a_random_joke() -> str:
+    """Returns a random joke
+
+    Returns:
+        str: A random joke
+    """
+    headers = {
+        "Accept": "application/json",
+        "User-Agent": "My FastAPI app (https://myapp.com/contact)",
+    }
+
+    resp = requests.get(JOKES_API_URL, headers=headers)
+    data = resp.json()
+    return data["joke"]
+
+
+@action
+def search_jokes(term: str) -> str:
+    """Finds jokes for a given term.
+
+    Args:
+        term (str): A term to create a joke about. Use only single words, no sentences.
+
+    Returns:
+        str: A joke
+    """
+
+    url = f"{JOKES_API_URL}/search?term={term}&page={0}&limit={5}"
+    headers = {
+        "Accept": "application/json",
+        "User-Agent": "My FastAPI app (https://myapp.com/contact)",
+    }
+
+    resp = requests.get(url, headers=headers)
+    data = resp.json()
+
+    return_string = ""
+
+    for joke in data["results"]:
+        return_string += f"{joke['joke']}\n"
+        return_string += "\n---\n\n"
+    return return_string
