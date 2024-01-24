@@ -255,11 +255,8 @@ def init_game() -> str:
 def game_action(move: str) -> str:
     """
     Executes a game action based on the player's move.
-
-    This function takes the player's intended move direction (UP, DOWN, LEFT, RIGHT) as input,
     updates the player's position in the maze accordingly, and returns a string describing
-    the result of the move. This includes the steps taken, any obstacles encountered,
-    and the player's new position. If the player reaches the end of the maze, this is also indicated.
+    the result of the move.
 
     Args:
         move (str): The direction in which the player wants to move one of (UP, DOWN, LEFT, RIGHT).
