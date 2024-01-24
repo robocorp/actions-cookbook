@@ -20,13 +20,6 @@ private_key = os.environ.get('IMAGEKIT_PRIVATE_KEY')
 public_key = os.environ.get('IMAGEKIT_PUBLIC_KEY')
 
 
-imagekit = ImageKit(
-    private_key=private_key,
-    public_key=public_key,
-    url_endpoint='llmfoo'
-)
-
-
 def run_code(code: str) -> str:
     # Create a new notebook object and cell with the code
     nb = nbformat.v4.new_notebook()
@@ -81,6 +74,11 @@ def _create_output(outputs) -> str:
 
 def upload_to_imagekit(file_path: str) -> str:
     print("Preparing to upload to ImageKit...")
+    imagekit = ImageKit(
+        private_key=private_key,
+        public_key=public_key,
+        url_endpoint='llmfoo'
+    )
     options = UploadFileRequestOptions(
         use_unique_file_name=True,
         is_private_file=False
