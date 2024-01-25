@@ -9,7 +9,7 @@ dependencies:
   - pip=23.2.1
   - robocorp-truststore=0.8.0
   - pip:
-      - robocorp==1.5.0
+      - robocorp==1.6.0
       - robocorp-actions==0.0.6
       - robocorp-browser==2.2.2 
-      - psycopg2==2.9.9
+      - psycopg2-binary==2.9.9

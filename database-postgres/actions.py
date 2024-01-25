@@ -5,6 +5,18 @@ AI Actions for dvdrental PostgreSQL database queries.
 import psycopg2
 from robocorp.actions import action
 
+def _connect():
+    # Use some .env or vault rather than adding your password here.
+    params = {
+        'database': 'dvdrental',
+        'user': 'postgres',
+        'password': 'SOMEPASSWD',
+        'host': 'localhost',
+        'port': '5432'
+    }
+
+    return psycopg2.connect(**params)
+
 
 @action(is_consequential=False)
 def customers_by_name(first_name: str) -> str:
@@ -18,16 +30,7 @@ def customers_by_name(first_name: str) -> str:
         str: List of customers based on the first name (customer number, first name, last name, email address).
     """
 
-    # Use some .env or vault rather than adding your password here.
-    params = {
-        'database': 'dvdrental',
-        'user': 'YOUR_USERNAME',
-        'password': 'YOUR_PASSWORD',
-        'host': 'localhost',
-        'port': '5432'
-    }
-
-    conn = psycopg2.connect(**params)
+    conn = _connect()
     cur = conn.cursor()
 
     sql_query = """
@@ -50,29 +53,19 @@ def customers_by_name(first_name: str) -> str:
 
 
 @action(is_consequential=False)
-def customers_rentals(first_name: str, last_name: str, limit: int = 5) -> str:
+def customers_rentals(first_name: str, last_name: str) -> str:
     """
     List customers latest rental transactions.
 
     Args:
         first_name (str): Customer's first name in string format. Example: "Jill"
         last_name (str): Customer's last name in string format. Example: "Jones"
-        limit (int): Number of results to query. Example: 5
 
     Returns:
         str: List of customers latest rental transactions containing rental date and the movie title.
     """
 
-    # Use some .env or vault rather than adding your password here.
-    params = {
-        'database': 'dvdrental',
-        'user': 'YOUR_USERNAME',
-        'password': 'YOUR_PASSWORD',
-        'host': 'localhost',
-        'port': '5432'
-    }
-
-    conn = psycopg2.connect(**params)
+    conn = _connect()
     cur = conn.cursor()
 
     sql_query = """
@@ -83,10 +76,10 @@ def customers_rentals(first_name: str, last_name: str, limit: int = 5) -> str:
     JOIN film f ON i.film_id = f.film_id
     WHERE c.first_name = %s AND c.last_name = %s
     ORDER BY rental_date DESC
-    LIMIT %s;
+    LIMIT 5;
     """
 
-    cur.execute(sql_query, (first_name, last_name, limit))
+    cur.execute(sql_query, (first_name, last_name))
     rows = cur.fetchall()
 
     output = []
@@ -112,16 +105,7 @@ def availability_in_stores(movie_title: str) -> str:
         str: List of stores where the movie is available.
     """
 
-    # Use some .env or vault rather than adding your password here.
-    params = {
-        'database': 'dvdrental',
-        'user': 'YOUR_USERNAME',
-        'password': 'YOUR_PASSWORD',
-        'host': 'localhost',
-        'port': '5432'
-    }
-
-    conn = psycopg2.connect(**params)
+    conn = _connect()
     cur = conn.cursor()
     limit = 5
 
@@ -156,23 +140,14 @@ def update_customer(id: int, new_email: str) -> str:
     Update customers email address.
 
     Args:
-        id (str): Customer ID. Example: 123
-        new_email (str): New email address. Example: "first.last@example.com
+        id (int): Customer ID. Example: 123
+        new_email (str): New email address. Example: "first.last@example.com"
 
     Returns:
         str: Information whether the update was successful.
     """
 
-    # Use some .env or vault rather than adding your password here.
-    params = {
-        'database': 'dvdrental',
-        'user': 'YOUR_USERNAME',
-        'password': 'YOUR_PASSWORD',
-        'host': 'localhost',
-        'port': '5432'
-    }
-
-    conn = psycopg2.connect(**params)
+    conn = _connect()
     cur = conn.cursor()
 
     sql_query = """
