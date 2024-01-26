@@ -4,7 +4,7 @@ from datetime import datetime
 from openai import OpenAI
 from dotenv import load_dotenv
 
-from robocorp.actions import action
+from robocorp.actions import action, teardown
 
 load_dotenv()
 
@@ -75,7 +75,7 @@ def _analyze_guess(word: str, guess: str):
             It is not allowed to guess multiople words or ask multiple clues at once.
             You have to answer with three values:
                 - "multiple_guesses" - boolean value if the user asked for multiple words or clues at once
-                - "incorrect_clue" - boolean value if the user asked fora clue that cannot be answered with simple yes or no
+                - "incorrect_clue" - boolean value if the user question is not valid
                 - "correct_guess" – boolean value if the exact word has been guess correctly.
                 - "clue_correct" – boolean value whether the clue question is correct or not
                 - "clue_response" – a short, less than 10 words confirmation whether the clue is correct or not.
@@ -149,7 +149,7 @@ def _get_random_word():
 
 def _get_guess_count(player: str):
     today = datetime.now().strftime('%Y-%m-%d')
-    db =  _get_db()
+    db, connection =  _get_db()
 
     db.execute("SELECT score, won FROM highscores WHERE date = ? AND player = ?", (today, player))
     result = db.fetchone()
@@ -160,8 +160,8 @@ def _get_guess_count(player: str):
     else:
         db.execute('INSERT INTO highscores (date, player, score, won) VALUES (?, ?, 1, 0)', (today, player,))
 
-    db.commit()
-    db.close()
+    connection.commit()
+    connection.close()
 
     if result:
         return [result[0] + 1, result[1]]
@@ -169,21 +169,21 @@ def _get_guess_count(player: str):
         return [1,0]
     
 def _set_highscore(player: str):
-    db =  _get_db()
+    db, connection =  _get_db()
 
     today = datetime.now().strftime('%Y-%m-%d')
     db.execute("UPDATE highscores SET won = 1 WHERE date = ? AND player = ?", (today, player))
 
-    db.commit()
-    db.close()
+    connection.commit()
+    connection.close()
     
 def _get_highscores(player: str):
     today = datetime.now().strftime('%Y-%m-%d')
-    db = _get_db()
+    db, connection = _get_db()
 
     db.execute("SELECT player, score FROM highscores WHERE date = ? AND won = 1 ORDER BY score ASC", (today, ))
     result = db.fetchall()
-    db.close()
+    connection.close()
 
     scores = []
 
@@ -207,7 +207,7 @@ def _get_highscores(player: str):
 
 
 def _get_todays_word():
-    db = _get_db()
+    db, connection = _get_db()
     today = datetime.now().strftime('%Y-%m-%d')
 
     db.execute("SELECT word FROM secret_words WHERE date=?", (today,))
@@ -218,19 +218,21 @@ def _get_todays_word():
     else:
         word = _get_random_word()
         db.execute("INSERT INTO secret_words (date, word) VALUES (?, ?)", (today, word))
-        db.commit()
+        connection.commit()
 
-    db.close()
+    connection.close()
 
     return word
 
 
 def _get_db():
     connection = sqlite3.connect('wordle.db')
-    cursor = connection.cursor()
+    db = connection.cursor()
 
-    cursor.execute('''CREATE TABLE IF NOT EXISTS secret_words
+    db.execute('''CREATE TABLE IF NOT EXISTS secret_words
                 (date TEXT PRIMARY KEY, word TEXT)''')
     
-    cursor.execute('''CREATE TABLE IF NOT EXISTS highscores
+    db.execute('''CREATE TABLE IF NOT EXISTS highscores
                 (date TEXT PRIMARY KEY, player TEXT, score INTEGER, won INTEGER)''')
+    
+    return db, connection
