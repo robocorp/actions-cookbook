@@ -1,5 +1,7 @@
 # ChatGPT Game Example
 
+![](image.png)
+
 When building a ChatGPT game there are several advatages in using Action Server:
 
 1. You can hide a private logic on server side.
