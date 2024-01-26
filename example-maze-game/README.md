@@ -1,6 +1,6 @@
 # ChatGPT Game Example
 
-<img src="image.png" alt="Maze Game Image" style="max-width: 400px;"/>
+<img src="image.png" alt="Maze Game Image" width="400"/>
 
 When building a ChatGPT game there are several advatages in using Action Server:
 
