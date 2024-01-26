@@ -2,11 +2,12 @@ from itertools import combinations
 
 
 class MazePlayer:
-    def __init__(self, grid, position, end_position):
+    def __init__(self, grid, position, end_position, game_id):
         """Initialize the maze player with the given maze and start position."""
         self.grid = grid
         self.position = position
         self.end_position = end_position
+        self.game_id = game_id
         self.directions = {
             "NORTH": (-1, 0),
             "SOUTH": (1, 0),
