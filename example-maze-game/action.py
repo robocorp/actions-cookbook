@@ -13,10 +13,10 @@ class MazePlayer:
         self.position = position
         self.end_position = end_position
         self.directions = {
-            "UP": (-1, 0),
-            "DOWN": (1, 0),
-            "LEFT": (0, -1),
-            "RIGHT": (0, 1),
+            "NORTH": (-1, 0),
+            "SOUTH": (1, 0),
+            "WEST": (0, -1),
+            "EAST": (0, 1),
         }
 
     def move(self, direction: str) -> list[str]:
@@ -58,19 +58,19 @@ class MazePlayer:
 
         # Check for openings directly adjacent in perpendicular directions
         perp_openings = False
-        if direction in ["UP", "DOWN"]:
-            # Check LEFT and RIGHT for perpendicular openings
+        if direction in ["NORTH", "SOUTH"]:
+            # Check WEST and EAST for perpendicular openings
             if x > 0 and self.grid[y][x - 1] == 0:
                 perp_openings = True
-                print(f"Open path in perpendicular direction LEFT at ({y}, {x - 1})")
+                print(f"Open path in perpendicular direction WEST at ({y}, {x - 1})")
             if x < len(self.grid[0]) - 1 and self.grid[y][x + 1] == 0:
                 perp_openings = True
-                print(f"Open path in perpendicular direction RIGHT at ({y}, {x + 1})")
-        elif direction in ["LEFT", "RIGHT"]:
-            # Check UP and DOWN for perpendicular openings
+                print(f"Open path in perpendicular direction EAST at ({y}, {x + 1})")
+        elif direction in ["WEST", "EAST"]:
+            # Check NORTH and DOWN for perpendicular openings
             if y > 0 and self.grid[y - 1][x] == 0:
                 perp_openings = True
-                print(f"Open path in perpendicular direction UP at ({y - 1}, {x})")
+                print(f"Open path in perpendicular direction NORTH at ({y - 1}, {x})")
             if y < len(self.grid) - 1 and self.grid[y + 1][x] == 0:
                 perp_openings = True
                 print(f"Open path in perpendicular direction DOWN at ({y + 1}, {x})")
@@ -147,7 +147,7 @@ def display_maze(maze, player):
 def find_start_position_near_s(maze):
     """Find the start position near 'S' in the maze."""
     s_y, s_x = maze.start
-    directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]  # Left, Right, Up, Down
+    directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]  # WEST, EAST, NORTH, SOUTH
 
     for dy, dx in directions:
         new_y, new_x = s_y + dy, s_x + dx
@@ -224,7 +224,7 @@ def deserialize_game_state(db_file: str) -> MazePlayer:
     return MazePlayer(grid, player_position, end_position)
 
 
-@action
+@action(is_consequential=False)
 def init_game() -> str:
     """
     Initializes the game with a randomly generated maze and places the player to start position.
@@ -251,7 +251,7 @@ def init_game() -> str:
             f"You can move from here: {player.free_directions().replace(':', ', ')}.")
 
 
-@action
+@action(is_consequential=False)
 def game_action(move: str) -> str:
     """
     Executes a game action based on the player's move.
@@ -259,7 +259,7 @@ def game_action(move: str) -> str:
     the result of the move.
 
     Args:
-        move (str): The direction in which the player wants to move one of (UP, DOWN, LEFT, RIGHT).
+        move (str): The direction in which the player wants to move one of (NORTH, SOUTH, WEST, EAST).
 
     Returns:
         str: A descriptive string of the outcome of the move, including the player's new position
