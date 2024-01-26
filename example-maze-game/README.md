@@ -33,3 +33,8 @@ Describe the game situation to user in a fun but short way and add a dall-e imag
 ```
 
 Add conversation starter: Start a new maze
+
+# Code
+
+Start checking actions from action.py.
+Game logic is in game.py and state storing related things in database.py.
