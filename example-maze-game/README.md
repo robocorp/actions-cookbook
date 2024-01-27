@@ -6,6 +6,7 @@ When building a ChatGPT game there are several advatages in using Action Server:
 
 1. You can hide a private logic on server side.
 2. You can enforce the game to follow rules.
+3. No game time wasted in LLM writing repetitive code for a python evaluator when the code is already in the action.
 
 In this maze game example we introduce how to:
 
