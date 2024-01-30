@@ -64,7 +64,7 @@ def truncate_output_with_beginning_clue(output: str, max_chars: int = 2000) -> s
         return output
 
 
-@action
+@action(is_consequential=False)
 def curl_command(command: str) -> str:
     """
     Executes a cURL command and returns a truncated JSON response.
@@ -99,7 +99,7 @@ def curl_command(command: str) -> str:
     return truncate_output_with_beginning_clue(str(data))
 
 
-@action
+@action(is_consequential=False)
 def jmespath_search(query: str) -> str:
     """
     Executes a JMESPath query on the JSON data stored by last curl_command.
