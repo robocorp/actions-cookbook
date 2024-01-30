@@ -78,13 +78,15 @@ def curl_command(command: str) -> str:
     try:
         response = curl_to_request(command)
         response.raise_for_status()  # Raises HTTPError for bad requests (4xx or 5xx)
-        data = response.json()
-    except ValueError:
-        return "Error: The response is not in JSON format."
-    except requests.exceptions.RequestException as e:
-        return f"Error: {str(e)}"
+    except (ValueError, requests.exceptions.RequestException) as e:
+        return f"Error: {e}"
     except Exception:
         return "Error: Invalid or malformed cURL command."
+
+    try:
+        data = response.json()
+    except ValueError as e:
+        return f"Error: The response is not in JSON format."
 
     with open("response.json", "w") as f:
         json.dump(data, f, indent=4)
