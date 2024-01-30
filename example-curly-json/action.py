@@ -1,4 +1,6 @@
+import glob
 import json
+import os
 
 from jmespath.exceptions import JMESPathError
 from robocorp.actions import action
@@ -88,7 +90,11 @@ def curl_command(command: str) -> str:
     except ValueError as e:
         return f"Error: The response is not in JSON format."
 
-    with open("response.json", "w") as f:
+    # Generate a timestamped filename for the response
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    response_filename = f"response_{timestamp}.json"
+
+    with open(response_filename, "w") as f:
         json.dump(data, f, indent=4)
     return truncate_output_with_beginning_clue(str(data))
 
@@ -105,8 +111,14 @@ def jmespath_search(query: str) -> str:
     Returns:
         str: The result of the JMESPath query, truncated if over 2000 characters.
     """
+
+    response_files = glob.glob('response_*.json')
+    if not response_files:
+        return "Error: No last result from curl_command found."
+
+    latest_file = max(response_files, key=os.path.getmtime)
     try:
-        with open("response.json", "r") as f:
+        with open(latest_file, "r") as f:
             json_data = json.load(f)
     except Exception:
         return "Error: Unable to read or parse last result json."
