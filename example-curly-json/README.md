@@ -21,7 +21,7 @@ Our actions make this exploration effortless and informative, even if you're not
 
 ### Process
 1. **Initiate a Query**: You start a conversation in ChatGPT, expressing your interest in satellite data from Celestrak. For example, you might ask, "How many STARLINK satellites are currently active?" and point to the url https://celestrak.org/NORAD/elements/gp.php?GROUP=active&FORMAT=json 
-2. **Behind-the-Scenes Action**: CurlGPT, acting as your assistant, uses a pre-formulated cURL command to fetch the latest satellite data from Celestrak's API. This process is entirely handled by the tool, so you don't need to worry about the complexities of API calls.
+2. **Behind-the-Scenes Action**: CurlGPT, acting as your assistant, uses a pre-formulated cURL command to fetch the latest satellite data from Celestrak's API.
 3. **Data Analysis and Presentation**: Once the data is retrieved, CurlGPT applies a JMESPath query to extract and present the specific information you requested – in this case, the number of active STARLINK satellites.
 4. **Further Exploration**: You can continue the conversation, asking for more details about a specific satellite, such as its orbital parameters or launch date. CurlGPT will refine the data search accordingly and provide you with the information in an easy-to-understand format.
 
