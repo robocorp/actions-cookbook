@@ -1,5 +1,6 @@
 import json
 
+from jmespath.exceptions import JMESPathError
 from robocorp.actions import action
 import requests
 import shlex
@@ -72,9 +73,19 @@ def curl_command(command: str) -> str:
                       Example: "curl -X POST -H 'Content-Type: application/json' -d '{\"key\":\"value\"}' http://example.com"
 
     Returns:
-        str: SON response from the HTTP request, truncated if over 2000 characters.
+        str: JSON response from the HTTP request, truncated if over 2000 characters.
     """
-    data = curl_to_request(command).json()
+    try:
+        response = curl_to_request(command)
+        response.raise_for_status()  # Raises HTTPError for bad requests (4xx or 5xx)
+        data = response.json()
+    except ValueError:
+        return "Error: The response is not in JSON format."
+    except requests.exceptions.RequestException as e:
+        return f"Error: {str(e)}"
+    except Exception:
+        return "Error: Invalid or malformed cURL command."
+
     with open("response.json", "w") as f:
         json.dump(data, f, indent=4)
     return truncate_output_with_beginning_clue(str(data))
@@ -92,10 +103,16 @@ def jmespath_search(query: str) -> str:
     Returns:
         str: The result of the JMESPath query, truncated if over 2000 characters.
     """
-    with open("response.json", "r") as f:
-        json_data = json.load(f)
+    try:
+        with open("response.json", "r") as f:
+            json_data = json.load(f)
+    except Exception:
+        return "Error: Unable to read or parse last result json."
 
-    result = jmespath.search(query, json_data)
+    try:
+        result = jmespath.search(query, json_data)
+    except JMESPathError:
+        return "Error: Invalid JMESPath query."
 
     # Generate a timestamped filename
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
