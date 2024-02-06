@@ -6,10 +6,10 @@ channels:
   - conda-forge
 
 dependencies:
-  - python=3.10.12                # https://pyreadiness.org/3.10
-  - pip=23.2.1                    # https://pip.pypa.io/en/stable/news
-  - robocorp-truststore=0.8.0     # https://pypi.org/project/robocorp-truststore/
+  - python=3.10.12 # https://pyreadiness.org/3.10
+  - pip=23.2.1 # https://pip.pypa.io/en/stable/news
+  - robocorp-truststore=0.8.0 # https://pypi.org/project/robocorp-truststore/
   - pip:
-    - robocorp==1.4.3
-    - robocorp-actions==0.0.6     # https://pypi.org/project/robocorp-browser
-    - rpaframework==28.1.0
+      - robocorp==1.4.3
+      - robocorp-actions==0.0.7 # https://pypi.org/project/robocorp-browser
+      - rpaframework==28.1.0
