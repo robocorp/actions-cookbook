@@ -10,6 +10,6 @@ dependencies:
   - robocorp-truststore=0.8.0
   - pip:
       - robocorp==1.4.3
-      - robocorp-actions==0.0.6
+      - robocorp-actions==0.0.7
       - openai==1.9.0
       - python-dotenv==1.0.1
