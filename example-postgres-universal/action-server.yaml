@@ -1,0 +1,14 @@
+# For more details on the format and content:
+# https://github.com/robocorp/rcc/blob/master/docs/recipes.md#what-is-in-condayaml
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.10.12
+  - pip=24.0
+  - robocorp-truststore=0.8.0
+  - pip:
+      - robocorp==1.6.1
+      - robocorp-actions==0.0.7
+      - psycopg2-binary==2.9.9
