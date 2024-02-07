@@ -21,16 +21,19 @@ class ReadOnlyConnection:
         self.conn.rollback()  # Rollback any changes (though there shouldn't be any)
         self.conn.close()
 
+
+def truncate_output_with_beginning_clue(output: str, max_chars: int = 2000) -> str:
+    beginning_clue = "[Cut] "  # A very short clue at the beginning to indicate possible truncation
+
+    if len(output) > max_chars:
+        truncated_output = output[:max_chars - len(beginning_clue)]
+        chars_missed = len(output) - len(truncated_output)
+        truncated_message = f"[+{chars_missed}]"
+        return beginning_clue + truncated_output + truncated_message
+    else:
+        return output
+
 def get_database_schema(conn):
-    """
-    Retrieves the database schema including table relationships.
-
-    Args:
-        conn: The database connection object.
-
-    Returns:
-        str: Textual representation of the database schema.
-    """
     schema_info = "Database Schema:\n"
 
     with conn.cursor() as cursor:
@@ -91,6 +94,53 @@ def get_database_schema(conn):
     return schema_info
 
 
+def truncate_query_results(results, max_chars=2000):
+    if not results:
+        return ""
+
+    if len(str(results)) < max_chars:
+        return str(results)
+
+    total_rows = min(10, len(results))
+    total_columns = min(30, len(results[0])) if results else 0
+
+    # Estimate average characters per cell
+    avg_chars_per_cell = max_chars // (total_rows * total_columns)
+
+    truncated_output = ""
+    for i, row in enumerate(results):
+        if i >= 10:
+            # Indicate additional rows not shown
+            row_count_not_shown = len(results) - 10
+            truncated_output += f"...[+{row_count_not_shown} rows]\n"
+            break
+
+        row_output = ""
+        for j, cell in enumerate(row):
+            if j >= 30:
+                # Indicate additional columns not shown
+                col_count_not_shown = len(row) - 30
+                row_output += f"...[+{col_count_not_shown} columns], "
+                break
+
+            cell_output = str(cell)
+            # Truncate cell if necessary
+            if len(cell_output) > avg_chars_per_cell:
+                cell_output = cell_output[:avg_chars_per_cell - 3] + "..."
+            row_output += cell_output + ", "
+
+        # Remove last comma and space, add newline
+        truncated_output += row_output.rstrip(", ") + "\n"
+
+        # Check if we've reached the max characters
+        if len(truncated_output) >= max_chars:
+            # Further truncate and end the loop
+            truncated_output = truncated_output[:max_chars - 3] + "..."
+            break
+
+    return truncated_output
+
+
 
 @action
 def init_postgres_connection(dsn: str) -> str:
@@ -112,7 +162,7 @@ def init_postgres_connection(dsn: str) -> str:
             json.dump(conn_params, file)
         with ReadOnlyConnection(conn_params) as conn:
             schema = get_database_schema(conn)
-        return schema
+        return truncate_output_with_beginning_clue(schema)
     except Exception as e:
         return f"Failed: {e}"
 
@@ -139,7 +189,7 @@ def execute_query(query: str) -> str:
             cursor = conn.cursor()
             cursor.execute(query)
             results = cursor.fetchall()
-            return str(results)
+            return truncate_query_results(results)
     except Exception as e:
         return f"An error occurred while executing the query: {e}"
 
