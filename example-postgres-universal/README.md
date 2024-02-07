@@ -1,7 +1,7 @@
 # PostgreSQL Universal Actions
 
 ## Overview
-This project simplifies interactions with PostgreSQL databases by allowing users to perform queries through 
+This example simplifies interactions with PostgreSQL databases by allowing users to perform queries through 
 conversational inputs translated by Large Language Models (LLMs), like OpenAI's GPT.
 It focuses on read-only operations to ensure security and prevent unintended data modifications.
 
