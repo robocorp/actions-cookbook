@@ -101,11 +101,7 @@ def truncate_query_results(results, max_chars=2000):
     if len(str(results)) < max_chars:
         return str(results)
 
-    total_rows = min(10, len(results))
-    total_columns = min(30, len(results[0])) if results else 0
-
-    # Estimate average characters per cell
-    avg_chars_per_cell = max_chars // (total_rows * total_columns)
+    cell_max = 50
 
     truncated_output = ""
     for i, row in enumerate(results):
@@ -125,8 +121,8 @@ def truncate_query_results(results, max_chars=2000):
 
             cell_output = str(cell)
             # Truncate cell if necessary
-            if len(cell_output) > avg_chars_per_cell:
-                cell_output = cell_output[:avg_chars_per_cell - 3] + "..."
+            if len(cell_output) > cell_max:
+                cell_output = cell_output[:cell_max - 3] + "..."
             row_output += cell_output + ", "
 
         # Remove last comma and space, add newline
