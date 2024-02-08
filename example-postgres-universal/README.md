@@ -47,7 +47,7 @@ To securely establish a connection to your PostgreSQL database, replace `usernam
 
 **dsn:** `postgresql://username:password@host:port/database`
 
-To do this securely, go to your Action Server UI http://localhost:8080 and execute the `init_postgres_connection` there.
+To do this securely, go to your Action Server UI http://localhost:8080 and execute the `init_postgres_connection` there. Copy the output from the execution to copy later for LLM use.
 
 **NOTE:** You can optionally also do this through LLM, but that will reveal the exact connection info to the LLM.
 
