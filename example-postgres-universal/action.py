@@ -37,6 +37,22 @@ def get_database_schema(conn):
     schema_info = "Database Schema:\n"
 
     with conn.cursor() as cursor:
+        # Retrieve triggers
+        cursor.execute("""
+            SELECT  event_object_table AS table_name, trigger_name         
+            FROM information_schema.triggers  
+            WHERE table_schema = 'public'
+        """)
+        trigger_records = cursor.fetchall()
+
+        table_trigger_dict = {}
+        if len(trigger_records) > 0:
+            for table_name, trigger_name in trigger_records:
+                if table_name not in table_trigger_dict.keys():
+                    table_trigger_dict[table_name] = [trigger_name]
+                else:
+                    table_trigger_dict[table_name].append(trigger_name)
+
         # Retrieve tables
         cursor.execute("""
             SELECT table_name
@@ -49,6 +65,9 @@ def get_database_schema(conn):
             table_name = table[0]
             schema_info += f"\nTable: {table_name}\n"
 
+            if table_name in table_trigger_dict.keys():
+                schema_info += f"Triggers: {', '.join(table_trigger_dict[table_name])}\n"
+                
             # Get columns and primary key info
             cursor.execute("""
                 SELECT column_name, data_type, is_nullable, column_default
