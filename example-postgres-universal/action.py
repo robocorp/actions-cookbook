@@ -39,9 +39,8 @@ def get_database_schema(conn):
     with conn.cursor() as cursor:
         # Retrieve triggers
         cursor.execute("""
-            SELECT  event_object_table AS table_name, trigger_name         
-            FROM information_schema.triggers  
-            WHERE table_schema = 'public'
+            SELECT event_object_table AS table_name, trigger_name
+            FROM information_schema.triggers
         """)
         trigger_records = cursor.fetchall()
 
