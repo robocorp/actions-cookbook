@@ -14,3 +14,7 @@ Remember to update the folder name in the code!
 ```py
 path = "/Users/tommi/Desktop/available_to_ai/"
 ```
+
+---
+
+What next? Read about how to run this Action with [Robocorp Action Server](https://github.com/robocorp/robocorp).
