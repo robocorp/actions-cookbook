@@ -8,7 +8,7 @@ description: Example contains 2 actions demostrating the use of APIs and Slack
 version: 0.0.1
 
 # Required: A link to where the documentation on the package lives.
-documentation: https://github.com/robocorp/actions-cookbook/tree/master/api-and-notify
+documentation: https://github.com/robocorp/actions-cookbook/tree/master/api-and-notify/README.md
 
 dependencies:
   conda-forge:

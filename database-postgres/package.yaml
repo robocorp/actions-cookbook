@@ -1,15 +1,15 @@
 
 # Required: A short name for the action package
-name: Action package name
+name: Make queries to Postgres database
     
 # Required: A description of what's in the action package.
-description: Action package description
+description: The example shows how to let your LLM app (like custom GPT) access a Postgres database, but only with queries that you have determined.
 
 # Required: The current version of this action package.
 version: 0.0.1
 
 # Required: A link to where the documentation on the package lives.
-documentation: https://github.com/...
+documentation: https://github.com/robocorp/actions-cookbook/blob/master/database-postgres/README.md
 
 dependencies:
   conda-forge:
@@ -17,7 +17,7 @@ dependencies:
   - pip=23.2.1
   - robocorp-truststore=0.8.0
   pypi:
-  - robocorp=1.6.0
+  - robocorp=1.6.2
   - robocorp-actions=0.0.7
   - robocorp-browser=2.2.2
   - psycopg2-binary=2.9.9
