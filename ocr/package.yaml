@@ -1,0 +1,27 @@
+
+# Required: A short name for the action package
+name: Action package name
+    
+# Required: A description of what's in the action package.
+description: Action package description
+
+# Required: The current version of this action package.
+version: 0.0.1
+
+# Required: A link to where the documentation on the package lives.
+documentation: https://github.com/...
+
+dependencies:
+  conda-forge:
+  - python=3.10.12
+  - pip=23.2.1
+  - robocorp-truststore=0.8.0
+  - tesseract=5.3.0
+  - pandas=2.1.4
+  pypi:
+  - robocorp=1.4.3
+  - robocorp-actions=0.0.7
+  - rpaframework=28.1.0
+  - pyautogui=0.9.54
+  - rpaframework-recognition=5.2.3
+
