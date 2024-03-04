@@ -1,15 +1,15 @@
 
 # Required: A short name for the action package
-name: Action package name
+name: Local computer folder to ChatGPT
     
 # Required: A description of what's in the action package.
-description: Action package description
+description: This is made only for demonstrating the power of Python actions when used with ChatGPT, not for production usage.
 
 # Required: The current version of this action package.
 version: 0.0.1
 
 # Required: A link to where the documentation on the package lives.
-documentation: https://github.com/...
+documentation: https://github.com/robocorp/actions-cookbook/blob/master/desktop-files/README.md
 
 dependencies:
   conda-forge:
@@ -17,6 +17,6 @@ dependencies:
   - pip=23.2.1
   - robocorp-truststore=0.8.0
   pypi:
-  - rpaframework=28.1.0
+  - rpaframework=28.3.0
   - robocorp-actions=0.0.7
 

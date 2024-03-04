@@ -1,15 +1,15 @@
 
 # Required: A short name for the action package
-name: Action package name
+name: Action Server chatbot
     
 # Required: A description of what's in the action package.
-description: Action package description
+description: This is an example of Robocorp Action Server working as an AI chatbot server for it's own actions.
 
 # Required: The current version of this action package.
 version: 0.0.1
 
 # Required: A link to where the documentation on the package lives.
-documentation: https://github.com/...
+documentation: https://github.com/robocorp/actions-cookbook/blob/master/example-chatbot/README.md
 
 dependencies:
   conda-forge:
@@ -23,8 +23,8 @@ dependencies:
   - langchain-community=0.0.11
   - langchain-robocorp=0.0.1
   - openai=1.7.0
-  - pytz=2023.3
+  - pytz=2024.1
   - python-dotenv=1.0.1
-  - robocorp=1.4.3
+  - robocorp=1.6.2
   - robocorp-actions=0.0.7
 
