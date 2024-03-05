@@ -1,4 +1,4 @@
-# Connect your local compute's folder to ChatGPT
+# Connect your local computer's folder to ChatGPT
 
 Instead of drag and dropping files to ChatGPT for additional context, what if you could just keep the files on your local folder, and let ChatGPT access them when needed? Pretty wild, right? But that's exactly what this action does!
 

@@ -1,15 +1,15 @@
 
 # Required: A short name for the action package
-name: Google Sheets Actions
-
+name: Local Advanced Data Analysis (LADA)
+    
 # Required: A description of what's in the action package.
-description: Reads the spreadsheet metadata and sheet contents, creates sheets and adds rows.
+description: A Python Notebook environment running on local machine that you may connect to OpenAI GPT as an Action.
 
 # Required: The current version of this action package.
 version: 0.0.1
 
 # Required: A link to where the documentation on the package lives.
-documentation: https://github.com/robocorp/actions-cookbook/blob/master/google-sheets/README.md
+documentation: https://github.com/robocorp/actions-cookbook/blob/master/local-advanced-data-analysis/README.md
 
 dependencies:
   conda-forge:
@@ -19,5 +19,5 @@ dependencies:
   pypi:
   - robocorp=1.6.2
   - robocorp-actions=0.0.7
-  - rpaframework=28.3.0
+  - requests=2.31.0
 

@@ -1,15 +1,15 @@
 
 # Required: A short name for the action package
-name: Google Sheets Actions
-
+name: Word guessing game example
+    
 # Required: A description of what's in the action package.
-description: Reads the spreadsheet metadata and sheet contents, creates sheets and adds rows.
+description: Using OpenAI locally to handle the game mechanics.
 
 # Required: The current version of this action package.
 version: 0.0.1
 
 # Required: A link to where the documentation on the package lives.
-documentation: https://github.com/robocorp/actions-cookbook/blob/master/google-sheets/README.md
+documentation: https://github.com/robocorp/actions-cookbook/blob/master/example-openai-wordle/README.md
 
 dependencies:
   conda-forge:
@@ -19,5 +19,6 @@ dependencies:
   pypi:
   - robocorp=1.6.2
   - robocorp-actions=0.0.7
-  - rpaframework=28.3.0
+  - openai=1.13.3
+  - python-dotenv=1.0.1
 
