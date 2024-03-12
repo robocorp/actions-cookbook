@@ -29,6 +29,7 @@ def fill_form_with_user_data(data: Prospect) -> str:
         browser_engine="chromium",
         screenshot="only-on-failure",
         headless=False,
+        # slowmo=100
     )
 
     page = browser.goto("https://robocorp.com/contact-us-internal-test")
@@ -40,9 +41,10 @@ def fill_form_with_user_data(data: Prospect) -> str:
     page.locator("[name=how_can_our_team_help_you_]").select_option("Get a product demo")
     page.locator("xpath=//input[@value='Get in Touch']").click()
 
-    try: 
-        page.wait_for_selector('text="Thank you for contacting us. Our team will get back to you shortly."')
-    except Exception as e:
-        return f"False: {e}"
-    finally:
+    elements = page.locator("//label[(contains(text(), 'Please complete this required field.')) or (contains(text(), 'Email must be formatted correctly.'))]")
+    count = elements.count()
+
+    if count > 0:
+        return "False: data is invalid."
+    else:
         return "True"
