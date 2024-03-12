@@ -1,0 +1,25 @@
+
+# Required: A short name for the action package
+name: Fill Robocorp Contact Form
+    
+# Required: A description of what's in the action package.
+description: Uses Playwright to fill in prospect details to a Robocorp contact form.
+
+# Required: The current version of this action package.
+version: 0.0.1
+
+# Required: A link to where the documentation on the package lives.
+documentation: https://github.com/...
+
+dependencies:
+  conda-forge:
+  - python=3.10.12
+  - robocorp-truststore=0.8.0
+  - pip=23.2.1
+  pypi:
+  - robocorp=1.6.2
+  - robocorp-actions=0.0.8
+  - robocorp-browser=2.3.0
+  - requests=2.31.0
+  - pydantic=2.6.3
+
