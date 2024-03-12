@@ -18,10 +18,9 @@ To get started, here are some of the basic examples:
 - [Simple greeter, think of Hello World](/greeter)
 - [Use API to get jokes](/api-jokes)
 - [Automate browser to make Google searches](/browser-google)
+- [Fill online forms with Playwright](/browser-fill-form)
+- [Read data from Google Sheets, and write data back](/google-sheets)
 - [Expose Postgres database queries to AI app](/database-postgres/)
-
-And a more advanced deep dive to running Python Notebook locally:
-- [/local-advanced-data-analysis](/local-advanced-data-analysis)
 
 ## How to Contribute
 
