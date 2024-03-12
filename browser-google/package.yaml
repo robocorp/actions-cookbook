@@ -1,16 +1,15 @@
 
 # Required: A short name for the action package
-name: Google Sheets Actions
-
+name: Google Search example
+    
 # Required: A description of what's in the action package.
-description: Reads the spreadsheet metadata and sheet contents, creates sheets and adds rows.
+description: The example shows how to open a browser (headless or not) and perform actions against a website.
 
 # Required: The current version of this action package.
 version: 0.0.1
 
 # Required: A link to where the documentation on the package lives.
-documentation: https://github.com/robocorp/actions-cookbook/blob/master/google-sheets/README.md
-
+documentation: https://github.com/robocorp/actions-cookbook/tree/master/browser-google/README.md
 
 dependencies:
   conda-forge:
@@ -18,7 +17,6 @@ dependencies:
   - pip=23.2.1
   - robocorp-truststore=0.8.0
   pypi:
-  - robocorp=1.6.2
+  - robocorp-browser=2.2.2
   - robocorp-actions=0.0.7
-  - rpaframework-google=8.2.0
 

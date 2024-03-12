@@ -16,5 +16,3 @@ testrun/*
 .~lock*
 *.pkl
 .use
-
-postgres_connection.json

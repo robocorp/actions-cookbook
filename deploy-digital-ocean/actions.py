@@ -1,3 +1,11 @@
+"""
+A simple AI Action template for comparing timezones
+
+Please checkout the base guidance on AI Actions in our main repository readme:
+https://github.com/robocorp/robocorp/blob/master/README.md
+
+"""
+
 from robocorp.actions import action
 
 import pytz

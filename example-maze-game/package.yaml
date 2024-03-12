@@ -1,24 +1,25 @@
 
 # Required: A short name for the action package
-name: Google Sheets Actions
-
+name: Maze Game Example
+    
 # Required: A description of what's in the action package.
-description: Reads the spreadsheet metadata and sheet contents, creates sheets and adds rows.
+description: ChatGPT Game Example
 
 # Required: The current version of this action package.
 version: 0.0.1
 
 # Required: A link to where the documentation on the package lives.
-documentation: https://github.com/robocorp/actions-cookbook/blob/master/google-sheets/README.md
-
+documentation: https://github.com/robocorp/actions-cookbook/blob/master/example-maze-game/README.md
 
 dependencies:
   conda-forge:
   - python=3.10.12
   - pip=23.2.1
   - robocorp-truststore=0.8.0
+  - Cython=0.29.32
+  - numpy=1.26.4
   pypi:
   - robocorp=1.6.2
   - robocorp-actions=0.0.7
-  - rpaframework-google=8.2.0
+  - mazelib=0.9.14
 

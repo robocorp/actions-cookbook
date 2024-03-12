@@ -1,16 +1,14 @@
 
 # Required: A short name for the action package
-name: Google Sheets Actions
-
+name: API and Slack notify example
+    
 # Required: A description of what's in the action package.
-description: Reads the spreadsheet metadata and sheet contents, creates sheets and adds rows.
-
+description: Example contains 2 actions demostrating the use of APIs and Slack
 # Required: The current version of this action package.
 version: 0.0.1
 
 # Required: A link to where the documentation on the package lives.
-documentation: https://github.com/robocorp/actions-cookbook/blob/master/google-sheets/README.md
-
+documentation: https://github.com/robocorp/actions-cookbook/tree/master/api-and-notify/README.md
 
 dependencies:
   conda-forge:
@@ -20,5 +18,5 @@ dependencies:
   pypi:
   - robocorp=1.6.2
   - robocorp-actions=0.0.7
-  - rpaframework-google=8.2.0
+  - rpaframework=28.3.0
 

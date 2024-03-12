@@ -1,24 +1,27 @@
 
 # Required: A short name for the action package
-name: Google Sheets Actions
-
+name: OCR example
+    
 # Required: A description of what's in the action package.
-description: Reads the spreadsheet metadata and sheet contents, creates sheets and adds rows.
+description: Demostrates OCR actions on screenshots
 
 # Required: The current version of this action package.
 version: 0.0.1
 
 # Required: A link to where the documentation on the package lives.
-documentation: https://github.com/robocorp/actions-cookbook/blob/master/google-sheets/README.md
-
+documentation: https://github.com/robocorp/actions-cookbook/blob/master/ocr/README.md
 
 dependencies:
   conda-forge:
   - python=3.10.12
   - pip=23.2.1
   - robocorp-truststore=0.8.0
+  - tesseract=5.3.4
+  - pandas=2.2.1
   pypi:
   - robocorp=1.6.2
   - robocorp-actions=0.0.7
-  - rpaframework-google=8.2.0
+  - rpaframework=28.3.0
+  - pyautogui=0.9.54
+  - rpaframework-recognition=5.2.3
 
