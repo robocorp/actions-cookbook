@@ -1,0 +1,19 @@
+# Required: A short name for the action package
+name: Request example
+
+# Required: A description of what's in the action package.
+description: This shows the very basic example of accessing request data
+
+# Required: The current version of this action package.
+version: 0.0.1
+
+# Required: A link to where the documentation on the package lives.
+documentation: https://github.com/robocorp/actions-cookbook/blob/master/example-request/README.md
+
+dependencies:
+  conda-forge:
+    - python=3.10.12
+    - pip=23.2.1
+  pypi:
+    - robocorp=2.0.0
+    - robocorp-actions=0.1.0
