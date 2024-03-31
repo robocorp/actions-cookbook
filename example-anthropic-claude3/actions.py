@@ -4,10 +4,7 @@ A simple AI Action to validate LLMs answers.
 """
 
 from robocorp.actions import action
-from dotenv import load_dotenv
 import anthropic
-
-load_dotenv()
 
 @action(is_consequential=False)
 def validate(user_question: str, proposed_answer: str) -> str:
@@ -22,7 +19,9 @@ def validate(user_question: str, proposed_answer: str) -> str:
         str: Suggested modifications to the proposed answer
     """
 
-    client = anthropic.Anthropic()
+    client = anthropic.Anthropic(
+        api_key="EDIT_THIS",
+    )
 
     message = client.messages.create(
         model="claude-3-opus-20240229",

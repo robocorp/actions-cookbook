@@ -18,6 +18,5 @@ dependencies:
   - robocorp-truststore=0.8.0
   pypi:
   - robocorp-actions=0.1.0
-  - python-dotenv=1.0.1
   - anthropic=0.21.3
 
