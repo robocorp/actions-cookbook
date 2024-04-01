@@ -6,7 +6,7 @@ name: Greeter example
 description: This shows the very basic python action in action
 
 # Required: The current version of this action package.
-version: 0.0.2
+version: 0.0.1
 
 # Required: A link to where the documentation on the package lives.
 documentation: https://github.com/robocorp/actions-cookbook/blob/master/greeter/README.md
