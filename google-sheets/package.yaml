@@ -18,6 +18,8 @@ dependencies:
   - robocorp-truststore=0.8.0
   pypi:
   - robocorp=1.6.2
-  - robocorp-actions=0.0.7
-  - rpaframework-google=8.2.0
+  - robocorp-actions=0.0.9
+  - rpaframework-google=9.0.0
+  - pydantic=2.6.4
+  - gspread=6.0.2
 

@@ -1,19 +1,28 @@
 
 from robocorp.actions import action
 from RPA.Cloud.Google import Google
+from typing import Annotated, List
+from pydantic import BaseModel, Field
+import gspread
+
+class Row(BaseModel):
+    columns: Annotated[List[str], Field(description="The columns that make up the row")]
+
+class RowData(BaseModel):
+    rows: Annotated[List[Row], Field(description="The rows that need to be added")]
 
 google = Google()
 creds = "credentials.json"
-sheet_id = "YOUR_SHEET_ID_HERE"
+sheet_id = "YOUR_SHEET_ID"
 
 
 @action(is_consequential=False)
 def get_google_spreadsheet_schema() -> str:
     """
     Action to get necessary information to be able to work with a Google Sheet Spreadsheets correctly.
-    Use this action minimumn once before anything else, so that you will learn about the structure
-    of the Spreadsheet. It will contain one or more Sheets, and the method will return the first few rows
-    of each Sheet as an example.
+    Use this action minimum once before anything else, to learn about the structure
+    of the Spreadsheet. Method will return the first few rows of each Sheet as an example.
+
 
     Returns:
         str: Names of the sheets, and a couple of first rows from each sheet to explain the context.
@@ -65,35 +74,33 @@ def create_new_google_sheet(name: str) -> str:
 
 
 @action(is_consequential=False)
-def add_sheet_rows(sheet: str, rows: str) -> str:
+def add_sheet_rows(sheet: str, rows_to_add: RowData) -> str:
     """
-    Action to add multiple rows to the Google sheet. You need to specify witch sheet first. Get the sheets with get_google_spreadsheet_schema
-    if you don't know the names or data structure.  Make sure the values are in correct columns (needs to be ordered the same as you have
-    seen in the sample). Strictly adhere to the schema. Do not add any example data, just the values that needs to be added to the sheet rows.
-    
-    Args:
-        sheet (str): Name of the sheet where the data is added to
-        rows (str): Values for the new row separated by comma. Example of one row: "John,Doe,john.doe@example.com, 600000". Do not use commas in the content, including the numbers. Separate rows with newline character.
+    Action to add multiple rows to the Google sheet. Get the sheets with get_google_spreadsheet_schema if you don't know
+    the names or data structure.  Make sure the values are in correct columns (needs to be ordered the same as in the sample).
+    Strictly adhere to the schema.
 
+    Args:
+        sheet: Name of the sheet where the data is added to
+        rows_to_add: the rows to be added to the sheet
     Returns:
         str: The result of the operation.
     """
 
-    google.init_sheets(creds)
+    gc = gspread.service_account(filename="credentials.json")
+    sh = gc.open_by_key(sheet_id)
+    worksheet = sh.worksheet(sheet)
 
-    lines = rows.splitlines()
+    raw_data = []
+    for row in rows_to_add.rows:
+        raw_data.append(row.columns)
 
-    for line in lines:
-
-        values = line.split(",")
-        values_list = [values]
-
-        # Create variable 'range_string' based on the amount of list items.
-        # 4 items -> "A:D"...
-        start_ascii = ord("A")
-        end_ascii = start_ascii + len(values) - 1
-        range_string = f"{sheet}!A:{chr(end_ascii)}"
-        google.insert_sheet_values(sheet_id, range_string, values_list, "ROWS")
+    # Append data to the end of the sheet
+    # The 'values' parameter is a list of lists, where each inner list represents a row
+    try:
+        worksheet.append_rows(values=raw_data)
+    except:
+        return "Error adding row(s)"
 
     return "Row(s) were successfully added"
 
