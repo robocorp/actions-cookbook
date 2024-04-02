@@ -1,0 +1,26 @@
+
+# Required: A short name for the action package
+name: Donut OCR Action
+
+# Required: A description of what's in the action package.
+description: Action package description
+
+# Required: The current version of this action package.
+version: 0.0.1
+
+# Required: A link to where the documentation on the package lives.
+documentation: https://github.com/...
+
+dependencies:
+  conda-forge:
+  - python=3.10.12
+  - pip=23.2.1
+  - robocorp-truststore=0.8.0
+  - pytorch=2.1.2
+  pypi:
+  - robocorp-actions=0.1.0
+  - transformers=4.39.2
+  - pillow=10.3.0
+  - sentencepiece=0.2.0
+  - protobuf=5.26.1
+
