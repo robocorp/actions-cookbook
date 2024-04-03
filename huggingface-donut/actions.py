@@ -3,6 +3,8 @@ Read receipts to JSON with Donut model from HuggingFace
 """
 
 from robocorp.actions import action
+from typing import Annotated
+from pydantic import BaseModel, Field
 
 import re
 from transformers import DonutProcessor, VisionEncoderDecoderModel
@@ -11,8 +13,11 @@ import requests
 from PIL import Image
 from io import BytesIO
 
-@action
-def read_and_extract_receipt_from_url(receipt_url: str) -> str:
+class ReceiptData(BaseModel):
+    receipt: Annotated[dict, Field(description="Extracted receipt contents")]
+
+@action(is_consequential=False)
+def read_and_extract_receipt_from_url(receipt_url: str) -> ReceiptData:
     """
     Converts a picture of an invoice to a structured data 
 
@@ -20,7 +25,7 @@ def read_and_extract_receipt_from_url(receipt_url: str) -> str:
         receipt_url (str): A complete URL that points to a one image file of a receipt.
  
     Returns:
-        str: A JSON representation of a receipts content
+        ReceiptData: A JSON representation of a receipts content
     """
 
     #receipt_url = "https://c8.alamy.com/comp/CNTYDX/tesco-shopping-receipt-CNTYDX.jpg"
@@ -58,4 +63,4 @@ def read_and_extract_receipt_from_url(receipt_url: str) -> str:
     sequence = re.sub(r"<.*?>", "", sequence, count=1).strip()  # remove first task start token
     print(processor.token2json(sequence))
 
-    return str(processor.token2json(sequence))
+    return {"receipt": processor.token2json(sequence)}

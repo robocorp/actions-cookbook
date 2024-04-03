@@ -19,8 +19,9 @@ dependencies:
   - pytorch=2.1.2
   pypi:
   - robocorp-actions=0.1.0
-  - transformers=4.39.2
+  - transformers=4.39.3
   - pillow=10.3.0
   - sentencepiece=0.2.0
   - protobuf=5.26.1
+  - pydantic=2.6.4
 
