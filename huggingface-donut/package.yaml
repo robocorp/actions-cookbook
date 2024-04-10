@@ -24,4 +24,3 @@ dependencies:
   - sentencepiece=0.2.0
   - protobuf=5.26.1
   - pydantic=2.6.4
-

@@ -63,4 +63,6 @@ def read_and_extract_receipt_from_url(receipt_url: str) -> ReceiptData:
     sequence = re.sub(r"<.*?>", "", sequence, count=1).strip()  # remove first task start token
     print(processor.token2json(sequence))
 
+
     return {"receipt": processor.token2json(sequence)}
+
