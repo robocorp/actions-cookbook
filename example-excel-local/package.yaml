@@ -1,6 +1,6 @@
 
 # Required: A short name for the action package
-name: Donut OCR Action
+name: Package name
 
 # Required: A description of what's in the action package.
 description: Action package description
@@ -16,11 +16,8 @@ dependencies:
   - python=3.10.12
   - pip=23.2.1
   - robocorp-truststore=0.8.0
-  - pytorch=2.1.2
   pypi:
   - robocorp-actions=0.1.0
-  - transformers=4.39.3
-  - pillow=10.3.0
-  - sentencepiece=0.2.0
-  - protobuf=5.26.1
+  - rpaframework=28.5.1
   - pydantic=2.6.4
+
