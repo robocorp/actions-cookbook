@@ -1,6 +1,6 @@
 name: Secret Greeter
 
-description: Action package description
+description: Greets user with a secret message
 
 version: 0.0.1
 
