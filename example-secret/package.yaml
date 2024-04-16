@@ -1,0 +1,16 @@
+name: Secret Greeter
+
+description: Action package description
+
+version: 0.0.1
+
+documentation: https://github.com/robocorp/robocorp/blob/master/action_server/docs/guides/07-secrets.md
+
+dependencies:
+  conda-forge:
+    - python=3.10.12
+    - pip=23.2.1
+    - robocorp-truststore=0.8.0
+  pypi:
+    - robocorp=2.0.0
+    - robocorp-actions=0.2.0
