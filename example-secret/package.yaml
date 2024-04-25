@@ -2,15 +2,11 @@ name: Secret Greeter
 
 description: Greets user with a secret message
 
-version: 0.0.2
-
 documentation: https://github.com/robocorp/robocorp/blob/master/action_server/docs/guides/07-secrets.md
 
 dependencies:
   conda-forge:
     - python=3.10.12
-    - pip=23.2.1
-    - robocorp-truststore=0.8.0
+    - uv=0.1.37
   pypi:
-    - robocorp=2.0.0
-    - robocorp-actions=0.2.1
+    - sema4ai-actions=0.3.1
