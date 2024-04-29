@@ -1,5 +1,8 @@
 # Welcome to Actions-Cookbook! 🌟
 
+> **ALERT:**  
+> Robocorp has been [acquired by Sema4.ai](https://www.linkedin.com/pulse/sema4ai-raises-305-million-bring-open-source-powered-ai-mission-critical-i8wsc/), and we continue to develop the examples under a new repository [here](https://github.com/Sema4AI/cookbook).
+
 ## What's This All About?
 
 The `actions-cookbook` is a collection of examples and templates,
