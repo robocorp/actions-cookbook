@@ -9,4 +9,4 @@ dependencies:
     - python=3.10.12
     - uv=0.1.37
   pypi:
-    - sema4ai-actions=0.3.1
+    - sema4ai-actions=0.5.0

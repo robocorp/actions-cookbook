@@ -1,22 +1,14 @@
-
-# Required: A short name for the action package
 name: Get random joke
-    
-# Required: A description of what's in the action package.
+
 description: This simple example shows how to make API calls with Actions.
 
-# Required: The current version of this action package.
-version: 0.0.1
-
-# Required: A link to where the documentation on the package lives.
 documentation: https://github.com/robocorp/actions-cookbook/tree/master/api-jokes/README.md
 
 dependencies:
   conda-forge:
-  - python=3.10.12
-  - pip=23.2.1
-  - robocorp-truststore=0.8.0
+    - python=3.10.12
+    - uv=0.1.37
   pypi:
-  - robocorp-actions=0.0.7
+  - sema4ai-actions=0.5.0
   - requests=2.31.0
 

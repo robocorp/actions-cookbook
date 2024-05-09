@@ -8,6 +8,7 @@ def greet_with_secret(name: str, secret_message: Secret) -> str:
 
     Args:
         name (str): Name of the user
+        secret_message: The secret message to disclose.
 
     Returns:
         str: Returns a greeting with a secret message
