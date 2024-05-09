@@ -1,7 +1,8 @@
 import requests
-from robocorp.actions import action
+from sema4ai.actions import action
 
 API_URL = "https://icanhazdadjoke.com/"
+
 
 @action
 def get_a_random_joke() -> str:
